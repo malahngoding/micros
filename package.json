@@ -1,0 +1,18 @@
+{
+  "name": "@malahngoding/micros",
+  "version": "0.0.1",
+  "description": "Malah Ngoding Micros",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malahngoding/micros.git"
+  },
+  "author": "Malah Ngoding Bot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malahngoding/micros/issues"
+  },
+  "homepage": "https://github.com/malahngoding/micros#readme"
+}
