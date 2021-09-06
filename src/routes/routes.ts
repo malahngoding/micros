@@ -10,6 +10,11 @@ const routes: RouteConfig = {
     url: `/`,
     handler: controllers.getIndex,
   },
+  greet: {
+    method: `GET`,
+    url: `/greet`,
+    handler: controllers.greet,
+  },
   getAllUsers: {
     method: `GET`,
     url: `/users`,
