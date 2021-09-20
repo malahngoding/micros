@@ -5,15 +5,30 @@ import * as middleware from '../middleware/index';
 type RouteConfig = Record<string, RouteOptions>;
 
 const routes: RouteConfig = {
-  home: {
+  getIndex: {
     method: `GET`,
     url: `/`,
     handler: controllers.getIndex,
   },
-  greet: {
-    method: `GET`,
-    url: `/greet`,
-    handler: controllers.greet,
+  postIndex: {
+    method: `POST`,
+    url: `/`,
+    handler: controllers.postIndex,
+  },
+  putIndex: {
+    method: `PUT`,
+    url: `/`,
+    handler: controllers.putIndex,
+  },
+  patchIndex: {
+    method: `PATCH`,
+    url: `/`,
+    handler: controllers.patchIndex,
+  },
+  deleteIndex: {
+    method: `DELETE`,
+    url: `/`,
+    handler: controllers.deleteIndex,
   },
   getAllUsers: {
     method: `GET`,
