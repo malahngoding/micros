@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 async function main() {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(`developer`, salt);
-  const bot = await prisma.account.upsert({
+  await prisma.account.upsert({
     where: {
       uuid: `41a6f10f-351e-4191-b4ce-bcc55b4d2a0d`,
     },
@@ -33,7 +33,38 @@ async function main() {
     },
   });
 
-  watchDog.debug(`Seeder Account`, bot);
+  await prisma.config.upsert({
+    where: {
+      key: `version`,
+    },
+    update: {},
+    create: {
+      key: `version`,
+      value: `0.0.5`,
+    },
+  });
+
+  await prisma.project.create({
+    data: {
+      projectName: `Malah Ngoding`,
+      accountId: 1,
+      Schema: {
+        create: {
+          accountId: 1,
+          schemaName: `Articles`,
+          SchemaField: {
+            createMany: {
+              data: [
+                { fieldName: `title`, fieldType: `String` },
+                { fieldName: `title`, fieldType: `String` },
+                { fieldName: `title`, fieldType: `String` },
+              ],
+            },
+          },
+        },
+      },
+    },
+  });
 }
 
 main()

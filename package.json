@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Malah Ngoding Micros",
   "private": true,
+  "prisma": {
+    "seed": "npx ts-node prisma/seed.ts"
+  },
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "rimraf build && tsc -p tsconfig.json",
