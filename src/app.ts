@@ -8,7 +8,7 @@ const app = fastify({
 });
 
 app.register(helmet);
-app.register(cors, { credentials: true, origin: `http://localhost:3000` });
+app.register(cors, { credentials: true, origin: `http://localhost:3500` });
 app.register(router);
 
 export { app };
