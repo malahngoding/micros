@@ -51,6 +51,7 @@
     "fastify-cors": "6.0.2",
     "fastify-helmet": "5.3.2",
     "fastify-plugin": "3.0.0",
+    "mdps": "0.0.1",
     "zoya": "1.0.2"
   },
   "devDependencies": {

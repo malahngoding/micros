@@ -36,6 +36,11 @@ const routes: RouteConfig = {
     preHandler: [middleware.validateRequest],
     handler: controllers.getAllUser,
   },
+  getContent: {
+    method: `GET`,
+    url: `/content`,
+    handler: controllers.getContent,
+  },
 };
 
 export const renderRoutes = Object.values(routes);
