@@ -43,6 +43,7 @@
     "typescript"
   ],
   "dependencies": {
+    "@hashgraph/sdk": "2.0.13",
     "@prisma/client": "2.30.2",
     "bcrypt": "5.0.1",
     "chalk": "2.4.2",

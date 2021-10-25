@@ -41,6 +41,21 @@ const routes: RouteConfig = {
     url: `/content`,
     handler: controllers.getContent,
   },
+  callHedera: {
+    method: `GET`,
+    url: `/hedera`,
+    handler: controllers.callHedera,
+  },
+  createHedera: {
+    method: `GET`,
+    url: `/hedera/create`,
+    handler: controllers.createHedera,
+  },
+  deleteHedera: {
+    method: `GET`,
+    url: `/hedera/delete`,
+    handler: controllers.deleteHedera,
+  },
 };
 
 export const renderRoutes = Object.values(routes);
