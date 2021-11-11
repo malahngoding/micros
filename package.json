@@ -7,10 +7,12 @@
     "seed": "npx ts-node prisma/seed.ts"
   },
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build": "rimraf build && tsc -p tsconfig.json",
-    "start": "node build/src/index.js",
-    "test": "jest",
+    "generate": "prisma generate",
+    "dev": "concurrently \"pnpm run compile-watch\" \"pnpm run serve-watch\"",
+    "build": "swc src -d --config-file .swcrc --out-dir build --copy-files",
+    "compile-watch": "swc src -d --config-file .swcrc --out-dir build --copy-files --watch",
+    "serve-watch": "nodemon build/index.js",
+    "serve": "node build/index.js",
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js)\" --write",
@@ -19,7 +21,6 @@
   },
   "lint-staged": {
     "./src/**/*.{ts,js}": [
-      "npm run lint --fix",
       "npm run format"
     ]
   },
@@ -48,11 +49,14 @@
     "bcrypt": "5.0.1",
     "chalk": "2.4.2",
     "crypto-js": "4.1.1",
+    "dotenv": "10.0.0",
     "fastify": "3.20.2",
     "fastify-cors": "6.0.2",
     "fastify-helmet": "5.3.2",
     "fastify-plugin": "3.0.0",
     "mdps": "0.0.1",
+    "vite": "2.6.13",
+    "vite-plugin-node": "0.0.14",
     "zoya": "1.0.2"
   },
   "devDependencies": {
@@ -71,8 +75,6 @@
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-next": "^11.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.23.4",
@@ -80,13 +82,18 @@
     "husky": "^7.0.1",
     "jest": "^27.1.0",
     "lint-staged": "11.1.2",
-    "nodemon": "^2.0.12",
     "prettier": "^2.3.2",
     "prisma": "2.30.2",
     "rimraf": "3.0.2",
     "supertest": "6.1.6",
     "ts-jest": "27.0.5",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "@swc-node/core": "^1.8.0",
+    "@swc/cli": "^0.1.51",
+    "@swc/core": "^1.2.107",
+    "chokidar": "^3.5.2",
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.15"
   }
 }

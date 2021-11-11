@@ -1,6 +1,5 @@
 {
   "env": {
-    "browser": true,
     "es6": true
   },
   "parserOptions": {
@@ -15,17 +14,11 @@
     "SharedArrayBuffer": "readonly"
   },
   "plugins": ["import", "prettier"],
-  "extends": ["airbnb", "prettier"],
+  "extends": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
     "camelcase": "off",
     "import/prefer-default-export": "off",
-    "react/prop-types": "off",
-    "react/jsx-filename-extension": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/no-unused-prop-types": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/require-default-props": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -66,9 +59,6 @@
       "typescript": {
         "project": "."
       }
-    },
-    "react": {
-      "version": "detect"
     }
   }
 }

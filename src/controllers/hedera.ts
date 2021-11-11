@@ -5,12 +5,11 @@ import {
   AccountBalanceQuery,
   Hbar,
   AccountDeleteTransaction,
+  AccountInfoQuery,
 } from '@hashgraph/sdk';
 import { RouteHandlerMethod } from 'fastify';
+import { hederaAccountID, hederaPrivateKey } from '../config';
 import { watchDog } from '../utils/dog';
-
-const hederaAccountID: string = process.env.ACCOUNT_ID || ``;
-const hederaPrivateKey: string = process.env.PRIVATE_KEY || ``;
 
 export const createHedera: RouteHandlerMethod = async (_, res) => {
   const client = Client.forTestnet();
@@ -74,6 +73,26 @@ export const callHedera: RouteHandlerMethod = async (_, res) => {
     message: `Hello Future!`,
     hedera: `${hederaAccountID}`,
     balance: `${accountBalance.hbars.toTinybars()} tinybars`,
+  };
+  return res.send(responseObject);
+};
+
+export const testHedera: RouteHandlerMethod = async (_, res) => {
+  // const client = Client.forTestnet();
+  // client.setOperator(hederaAccountID, hederaPrivateKey);
+
+  // Create the account info query
+  // const query = new AccountInfoQuery().setAccountId(hederaAccountID);
+
+  // Sign with client operator private key and submit the query to a Hedera network
+  // const accountInfo = await query.execute(client);
+
+  // Print the account info to the console
+
+  const responseObject = {
+    message: `Hello Future!`,
+    hederaAccountID,
+    hederaPrivateKey,
   };
   return res.send(responseObject);
 };
