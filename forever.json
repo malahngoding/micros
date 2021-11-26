@@ -1,0 +1,7 @@
+{
+  "uid": "app1",
+  "append": true,
+  "watch": false,
+  "script": "start.mjs",
+  "sourceDir": "/home/jelastic/ROOT"
+}
