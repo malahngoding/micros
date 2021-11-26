@@ -1,15 +1,15 @@
 import * as controllers from "../controllers/index.mjs";
 
 const routes = {
-  getIndex: {
-    method: `GET`,
-    url: `/`,
-    handler: controllers.getIndex,
-  },
-  postIndex: {
+  createHederaMnemonic: {
     method: `POST`,
-    url: `/`,
-    handler: controllers.postIndex,
+    url: `/hedera/account/mnemonic`,
+    handler: controllers.createHederaMnemonic,
+  },
+  createHederaAccount: {
+    method: `POST`,
+    url: `/hedera/account/create`,
+    handler: controllers.createHederaAccount,
   },
 };
 
