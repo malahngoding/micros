@@ -1,5 +1,14 @@
 {
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon start.mjs"
+  },
   "dependencies": {
-    "fastify": "^3.24.0"
+    "@hashgraph/sdk": "^2.5.0",
+    "dotenv": "^10.0.0",
+    "fastify": "^3.24.0",
+    "fastify-cors": "^6.0.2",
+    "fastify-helmet": "^5.3.2",
+    "nodemon": "^2.0.15"
   }
 }
