@@ -11,6 +11,11 @@ const routes = {
     url: `/hedera/account/create`,
     handler: controllers.createHederaAccount,
   },
+  postIndex: {
+    method: `GET`,
+    url: `/`,
+    handler: controllers.postIndex,
+  },
 };
 
 export const renderRoutes = Object.values(routes);
