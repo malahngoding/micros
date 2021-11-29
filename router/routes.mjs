@@ -11,10 +11,10 @@ const routes = {
     url: `/hedera/account/create`,
     handler: controllers.createHederaAccount,
   },
-  postIndex: {
+  homeIndex: {
     method: `GET`,
     url: `/`,
-    handler: controllers.postIndex,
+    handler: controllers.homeIndex,
   },
 };
 

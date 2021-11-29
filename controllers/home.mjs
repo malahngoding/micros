@@ -1,4 +1,4 @@
-export const postIndex = async (_, res) => {
+export const homeIndex = async (_, res) => {
   const responseObject = {
     messages: `Hello World`,
     status: `OK`,

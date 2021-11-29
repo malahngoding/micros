@@ -1,13 +1,22 @@
-import mysql from "mysql2";
-import config from "../config.mjs";
+import pkg from "@prisma/client";
 
-export const pool = mysql.createPool({
-  host: config.host,
-  port: config.port,
-  user: config.dbUsername,
-  password: config.dbPassword,
-  database: config.db,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+const { PrismaClient } = pkg;
+const prisma = new PrismaClient();
+
+async function main() {
+  // ... you will write your Prisma Client queries here
+  console.log("Start");
+  const allUsers = await prisma.user.count();
+  const allPost = await prisma.post.count();
+  const allProfile = await prisma.profile.count();
+
+  console.log(allUsers, allPost, allProfile);
+}
+
+main()
+  .catch((e) => {
+    throw e;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
