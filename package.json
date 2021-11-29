@@ -1,7 +1,14 @@
 {
   "scripts": {
+    "db:refresh": "npx prisma migrate reset",
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "npx prisma db seed",
     "dev": "nodemon start.mjs",
-    "start": "node start.mjs"
+    "start": "node start.mjs",
+    "db:start": "npx prisma migrate deploy"
+  },
+  "prisma": {
+    "seed": "node database/seeds.mjs"
   },
   "dependencies": {
     "@hashgraph/sdk": "^2.5.0",
