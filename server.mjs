@@ -23,4 +23,4 @@ server.register(helmet);
 server.register(cors, { credentials: true, origin: `${config.spaceURL}` });
 server.register(router);
 
-export { server };
+export default server;

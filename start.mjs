@@ -1,4 +1,4 @@
-import { server } from "./server.mjs";
+import server from "./server.mjs";
 import { config } from "./config.mjs";
 
 const start = () => {
