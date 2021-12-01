@@ -1,36 +1,36 @@
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["referentialIntegrity"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-    provider             = "mysql"
-    url                  = env("DATABASE_URL")
-    shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
-    referentialIntegrity = "prisma"
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model Post {
-    id        Int      @id @default(autoincrement())
-    title     String   @db.VarChar(255)
-    createdAt DateTime @default(now()) @db.Timestamp(6)
-    content   String?
-    published Boolean  @default(false)
-    authorId  Int
-    User      User     @relation(fields: [authorId], references: [id])
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  content   String?
+  published Boolean  @default(false)
+  authorId  Int
+  User      User     @relation(fields: [authorId], references: [id])
 }
 
 model Profile {
-    id     Int     @id @default(autoincrement())
-    bio    String?
-    userId Int     @unique
-    User   User    @relation(fields: [userId], references: [id])
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  userId Int     @unique
+  User   User    @relation(fields: [userId], references: [id])
 }
 
 model User {
-    id      Int      @id @default(autoincrement())
-    name    String?  @db.VarChar(255)
-    email   String   @unique @db.VarChar(255)
-    Post    Post[]
-    Profile Profile?
+  id      Int      @id @default(autoincrement())
+  name    String?  @db.VarChar(255)
+  email   String   @unique @db.VarChar(255)
+  Post    Post[]
+  Profile Profile?
 }
