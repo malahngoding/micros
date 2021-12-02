@@ -26,6 +26,11 @@ const routes = {
     url: `/getMessageFromTopic`,
     handler: controllers.getMessageFromTopic,
   },
+  createNFT: {
+    method: `POST`,
+    url: `/createNFT`,
+    handler: controllers.createNFT,
+  },
   homeIndex: {
     method: `GET`,
     url: `/`,
