@@ -1,6 +1,6 @@
 import * as controllers from "../controllers/index.mjs";
 
-const routes = {
+export const hedera = {
   createHederaMnemonic: {
     method: `POST`,
     url: `/createHederaMnemonic`,
@@ -31,11 +31,4 @@ const routes = {
     url: `/createNFT`,
     handler: controllers.createNFT,
   },
-  homeIndex: {
-    method: `GET`,
-    url: `/`,
-    handler: controllers.homeIndex,
-  },
 };
-
-export const renderRoutes = Object.values(routes);

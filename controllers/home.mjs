@@ -1,6 +1,6 @@
 export const homeIndex = async (_, res) => {
   const responseObject = {
-    messages: `Hello World`,
+    messages: `Hello Future`,
     status: `OK`,
     data: {
       serverTime: new Date(),

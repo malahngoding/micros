@@ -1,4 +1,7 @@
-import { renderRoutes } from "./routes.mjs";
+import { hedera } from "./hedera.mjs";
+import { home } from "./home.mjs";
+
+const renderRoutes = Object.values({ ...hedera, ...home });
 
 const router = (fastify, opts, next) => {
   fastify.decorateRequest(`user`, null);
