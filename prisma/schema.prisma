@@ -10,17 +10,50 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-model User {
-  id         Int      @id @default(autoincrement())
-  name       String?  @db.VarChar(255)
-  email      String   @unique @db.VarChar(255)
-  timestamps DateTime @default(now())
+model Profile {
+  id        Int      @id @default(autoincrement())
+  bio       String?
+  userId    Int      @unique
+  User      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @default(now()) @db.Timestamp(6)
 }
 
-model Profile {
-  id         Int      @id @default(autoincrement())
-  bio        String?  @db.VarChar(255)
-  username   String?  @db.VarChar(32)
-  timestamps DateTime @default(now())
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?  @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
+  Profile   Profile?
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @default(now()) @db.Timestamp(6)
+}
 
+model QuestionGroup {
+  id             Int              @id @default(autoincrement())
+  groupName      String           @db.VarChar(255)
+  questionTag    String           @db.VarChar(64)
+  QuestionDetail QuestionDetail[]
+  createdAt      DateTime         @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime         @default(now()) @db.Timestamp(6)
+}
+
+model QuestionDetail {
+  id              Int              @id @default(autoincrement())
+  questionString  String           @db.VarChar(255)
+  QuestionAnswer  QuestionAnswer[]
+  QuestionGroup   QuestionGroup?   @relation(fields: [questionGroupId], references: [id])
+  questionGroupId Int?
+  createdAt       DateTime         @default(now()) @db.Timestamp(6)
+  updatedAt       DateTime         @default(now()) @db.Timestamp(6)
+}
+
+model QuestionAnswer {
+  id               Int             @id @default(autoincrement())
+  order            Int
+  answerString     String          @db.VarChar(255)
+  isCorrect        Boolean
+  QuestionDetail   QuestionDetail? @relation(fields: [questionDetailId], references: [id])
+  questionDetailId Int?
+  createdAt        DateTime        @default(now()) @db.Timestamp(6)
+  updatedAt        DateTime        @default(now()) @db.Timestamp(6)
 }
