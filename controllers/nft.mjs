@@ -29,7 +29,7 @@ export const createNFT = async (_, res) => {
   const responseObject = {
     messages: `Mnemonic Words Created`,
     status: `OK`,
-    data: {},
+    payload: {},
   };
   return res.send(responseObject);
 };

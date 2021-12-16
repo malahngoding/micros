@@ -8,14 +8,15 @@ import {
 } from "@hashgraph/sdk";
 import { config } from "../config.mjs";
 
-export const createHederaMnemonic = async (_, res) => {
+export const createHederaMnemonic = async (req, res) => {
   const mnemonic = await Mnemonic.generate();
 
   const responseObject = {
     messages: `Mnemonic Words Created`,
     status: `OK`,
-    data: {
+    payload: {
       mnemonicKey: mnemonic.words,
+      test: req.body.identification,
     },
   };
   return res.send(responseObject);
@@ -43,7 +44,7 @@ export const createHederaAccount = async (req, res) => {
   const responseObject = {
     messages: `New Hedera Account created`,
     status: `OK`,
-    data: {
+    payload: {
       accountId: `${newAccountId}`,
       publicKey: `${newAccountPublicKey}`,
       privateKey: `${newAccountPrivateKey}`,
@@ -64,7 +65,7 @@ export const createHederaTopic = async (req, res) => {
   const responseObject = {
     messages: `Created new consensus topic`,
     status: `OK`,
-    data: {
+    payload: {
       consensusTopicId: `${newTopicId}`,
     },
   };
@@ -90,7 +91,7 @@ export const submitMessageToHederaTopic = async (req, res) => {
   const responseObject = {
     messages: `Message submitted to topic ${topicId}`,
     status: `OK`,
-    data: {},
+    payload: {},
   };
   return res.send(responseObject);
 };
@@ -113,7 +114,7 @@ export const getMessageFromTopic = async (req, res) => {
   const responseObject = {
     messages: `Message submitted to topic ${topicId}`,
     status: `OK`,
-    data: {
+    payload: {
       responses,
     },
   };

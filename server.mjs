@@ -20,7 +20,7 @@ server.register(fstatic, {
 });
 
 server.register(helmet);
-server.register(cors, { credentials: true, origin: `${config.spaceURL}` });
+server.register(cors, { credentials: true, origin: `${config.spacesURL}` });
 server.register(router);
 
 export default server;

@@ -2,7 +2,7 @@ export const homeIndex = async (_, res) => {
   const responseObject = {
     messages: `Hello Future`,
     status: `OK`,
-    data: {
+    payload: {
       serverTime: new Date(),
     },
   };

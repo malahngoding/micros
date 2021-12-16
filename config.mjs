@@ -14,6 +14,7 @@ const config = {
   db: process.env.DB_DATABASE,
   dbUsername: process.env.DB_USERNAME,
   dbPassword: process.env.DB_PASSWORD,
+  insteadToken: process.env.INSTEAD_TOKEN,
 };
 
 export { config };

@@ -12,6 +12,9 @@ datasource db {
 
 model Profile {
   id        Int      @id @default(autoincrement())
+  name      String?  @db.VarChar(255)
+  email     String?  @db.VarChar(255)
+  avatar    String?  @db.VarChar(255)
   bio       String?
   userId    Int      @unique
   User      User     @relation(fields: [userId], references: [id])
@@ -20,12 +23,11 @@ model Profile {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String?  @db.VarChar(255)
-  email     String   @unique @db.VarChar(255)
-  Profile   Profile?
-  createdAt DateTime @default(now()) @db.Timestamp(6)
-  updatedAt DateTime @default(now()) @db.Timestamp(6)
+  id             Int      @id @default(autoincrement())
+  identification String   @unique
+  Profile        Profile?
+  createdAt      DateTime @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime @default(now()) @db.Timestamp(6)
 }
 
 model QuestionGroup {
