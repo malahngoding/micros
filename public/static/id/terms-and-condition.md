@@ -7,7 +7,7 @@ publishedAt: "11 Desember 2021"
 
 Terima kasih telah mengunjungi **MALAHNGODING** sebuah platform pembelajaran praktis untuk para pengembang aplikasi berbasis web dan mobile dengan model full online learning. Pada halaman ini akan dijelaskan ketentuan-ketentuan terkait dengan **MALAHNGODING**. Dengan Kamu menggunakan platform **MALAHNGODING**, maka Kamu telah setuju dan patuh dengan Ketentuan Penggunaan platform ini. Bila Kamu tidak setuju dengan Ketentuan Penggunaan platform yang dijelaskan, maka Kamu tidak diperkenankan menggunakan platform ini.
 
-Ketentuan Penggunaan ini berlaku terhadap seluruh pengguna dan pengunjung platform dan aplikasi **MALAHNGODING**. Setiap pengguna fitur, konten, dan produk yang disediakan oleh **MALAHNGODING**(**malahngoding**.com” atau “kami”) untuk selanjutnya secara bersama-sama akan disebut sebagai “Pengguna”, “Pelanggan” atau “Kamu”.
+Ketentuan Penggunaan ini berlaku terhadap seluruh pengguna dan pengunjung platform dan aplikasi **MALAHNGODING**. Setiap pengguna fitur, konten, dan produk yang disediakan oleh **MALAHNGODING** (**malahngoding**.com” atau “kami”) untuk selanjutnya secara bersama-sama akan disebut sebagai “Pengguna”, “Pelanggan” atau “Kamu”.
 
 Ketentuan Penggunaan ini dapat diubah, dimodifikasi, ditambah, atau diamandemen dari waktu ke waktu berdasarkan kebijakan kami, dan dengan tanpa adanya pemberitahuan terlebih dahulu kepada Kamu. Kamu setuju dan menerima kewajiban Kamu untuk memeriksa Ketentuan Penggunaan ini secara rutin pada platform kami.
 

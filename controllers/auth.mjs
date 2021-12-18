@@ -45,7 +45,7 @@ export const issueToken = async (req, res) => {
                 noun: ["animals", "thing", "technology"],
               },
             })}@malahngoding.com`,
-            avatar: `https://avatars.dicebear.com/api/open-peeps/${randomstring.generate(
+            avatar: `https://avatars.dicebear.com/api/micah/${randomstring.generate(
               14
             )}.svg`,
             bio: "",
@@ -53,28 +53,60 @@ export const issueToken = async (req, res) => {
         },
       },
     });
+    const user = await prisma.user.findUnique({
+      where: {
+        identification: `${dechiperedIdentification}__${provider}`,
+      },
+      select: {
+        identification: true,
+        Profile: true,
+      },
+    });
+
+    const data = {
+      id: dechiperedIdentification,
+      name: user.Profile.name,
+      email: user.Profile.email,
+      avatar: user.Profile.avatar,
+      bio: user.Profile.bio,
+      joinedSince: user.Profile.createdAt,
+    };
+
+    const ciphertext = CryptoJs.AES.encrypt(
+      JSON.stringify(data),
+      config.insteadToken
+    ).toString();
+
+    const responseObject = {
+      messages: `Token issued`,
+      status: `OK`,
+      payload: {
+        token: `instead_${ciphertext}`,
+      },
+    };
+    return res.send(responseObject);
+  } else {
+    const data = {
+      id: dechiperedIdentification,
+      name: user.Profile.name,
+      email: user.Profile.email,
+      avatar: user.Profile.avatar,
+      bio: user.Profile.bio,
+      joinedSince: user.Profile.createdAt,
+    };
+
+    const ciphertext = CryptoJs.AES.encrypt(
+      JSON.stringify(data),
+      config.insteadToken
+    ).toString();
+
+    const responseObject = {
+      messages: `Token issued`,
+      status: `OK`,
+      payload: {
+        token: `instead_${ciphertext}`,
+      },
+    };
+    return res.send(responseObject);
   }
-
-  const data = {
-    id: dechiperedIdentification,
-    name: user.Profile.name,
-    email: user.Profile.email,
-    avatar: user.Profile.avatar,
-    bio: user.Profile.bio,
-    joinedSince: user.Profile.createdAt,
-  };
-
-  const ciphertext = CryptoJs.AES.encrypt(
-    JSON.stringify(data),
-    config.insteadToken
-  ).toString();
-
-  const responseObject = {
-    messages: `Token issued`,
-    status: `OK`,
-    payload: {
-      token: `instead_${ciphertext}`,
-    },
-  };
-  return res.send(responseObject);
 };

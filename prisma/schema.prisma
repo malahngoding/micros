@@ -13,7 +13,7 @@ datasource db {
 model Profile {
   id        Int      @id @default(autoincrement())
   name      String?  @db.VarChar(255)
-  email     String?  @db.VarChar(255)
+  email     String?  @unique @db.VarChar(255)
   avatar    String?  @db.VarChar(255)
   bio       String?
   userId    Int      @unique
