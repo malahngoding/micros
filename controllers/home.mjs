@@ -3,7 +3,7 @@ export const homeIndex = async (_, res) => {
     messages: `Hello Future`,
     status: `OK`,
     payload: {
-      serverTime: new Date(),
+      empty: true,
     },
   };
   return res.send(responseObject);

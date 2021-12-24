@@ -1,24 +1,11 @@
 import * as controllers from "../controllers/index.mjs";
+import * as middleware from "../middleware/index.mjs";
 
 export const profile = {
-  updateName: {
+  updateProfileDetails: {
     method: `POST`,
-    url: `/updateName`,
-    handler: controllers.updateName,
-  },
-  updateEmail: {
-    method: `POST`,
-    url: `/updateEmail`,
-    handler: controllers.updateEmail,
-  },
-  updateAvatar: {
-    method: `POST`,
-    url: `/updateAvatar`,
-    handler: controllers.updateAvatar,
-  },
-  updateBio: {
-    method: `POST`,
-    url: `/updateBio`,
-    handler: controllers.updateBio,
+    url: `/updateProfileDetails`,
+    handler: controllers.updateProfileDetails,
+    preHandler: [middleware.authenticated],
   },
 };

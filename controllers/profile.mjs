@@ -1,42 +1,44 @@
-export const updateName = async (_, res) => {
+import { prisma } from "../database/prisma.mjs";
+
+export const getProfileDetails = async (req, res) => {
+  const { assignee } = req;
+
+  const state = await prisma.profile.findUnique({
+    where: {
+      email: assignee,
+    },
+  });
+
   const responseObject = {
     messages: `Hello Future`,
     status: `OK`,
     payload: {
-      serverTime: new Date(),
+      empty: true,
     },
   };
   return res.send(responseObject);
 };
 
-export const updateEmail = async (_, res) => {
-  const responseObject = {
-    messages: `Hello Future`,
-    status: `OK`,
-    payload: {
-      serverTime: new Date(),
-    },
-  };
-  return res.send(responseObject);
-};
+export const updateProfileDetails = async (req, res) => {
+  const { assignee } = req;
+  const { name, avatar, bio } = req.body;
 
-export const updateAvatar = async (_, res) => {
-  const responseObject = {
-    messages: `Hello Future`,
-    status: `OK`,
-    payload: {
-      serverTime: new Date(),
+  await prisma.profile.update({
+    where: {
+      email: assignee,
     },
-  };
-  return res.send(responseObject);
-};
+    data: {
+      name: name,
+      avatar: `https://avatars.dicebear.com/api/micah/${avatar}.svg`,
+      bio: bio,
+    },
+  });
 
-export const updateBio = async (_, res) => {
   const responseObject = {
     messages: `Hello Future`,
     status: `OK`,
     payload: {
-      serverTime: new Date(),
+      empty: true,
     },
   };
   return res.send(responseObject);
