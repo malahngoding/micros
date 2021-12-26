@@ -8,4 +8,10 @@ export const profile = {
     handler: controllers.updateProfileDetails,
     preHandler: [middleware.authenticated],
   },
+  getProfileDetails: {
+    method: `POST`,
+    url: `/getProfileDetails`,
+    handler: controllers.getProfileDetails,
+    preHandler: [middleware.authenticated],
+  },
 };

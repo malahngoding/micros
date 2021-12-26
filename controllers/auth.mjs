@@ -21,8 +21,6 @@ export const issueToken = async (req, res) => {
     },
   });
 
-  console.log(randomstring.generate(14));
-
   if (!user) {
     await prisma.user.create({
       data: {
@@ -45,9 +43,7 @@ export const issueToken = async (req, res) => {
                 noun: ["animals", "thing", "technology"],
               },
             })}@malahngoding.com`,
-            avatar: `https://avatars.dicebear.com/api/micah/${randomstring.generate(
-              14
-            )}.svg`,
+            avatar: ` ${randomstring.generate(14)} `,
             bio: "",
           },
         },
@@ -64,12 +60,7 @@ export const issueToken = async (req, res) => {
     });
 
     const data = {
-      id: dechiperedIdentification,
-      name: user.Profile.name,
-      email: user.Profile.email,
-      avatar: user.Profile.avatar,
-      bio: user.Profile.bio,
-      joinedSince: user.Profile.createdAt,
+      id: `${dechiperedIdentification}__${provider}`,
     };
 
     const ciphertext = CryptoJs.AES.encrypt(
@@ -87,12 +78,7 @@ export const issueToken = async (req, res) => {
     return res.send(responseObject);
   } else {
     const data = {
-      id: dechiperedIdentification,
-      name: user.Profile.name,
-      email: user.Profile.email,
-      avatar: user.Profile.avatar,
-      bio: user.Profile.bio,
-      joinedSince: user.Profile.createdAt,
+      id: `${dechiperedIdentification}__${provider}`,
     };
 
     const ciphertext = CryptoJs.AES.encrypt(

@@ -3,9 +3,20 @@ import { prisma } from "../database/prisma.mjs";
 export const getProfileDetails = async (req, res) => {
   const { assignee } = req;
 
-  const state = await prisma.profile.findUnique({
+  const profile = await prisma.user.findUnique({
     where: {
-      email: assignee,
+      identification: assignee,
+    },
+    select: {
+      Profile: {
+        select: {
+          avatar: true,
+          bio: true,
+          name: true,
+          email: true,
+          createdAt: true,
+        },
+      },
     },
   });
 
@@ -13,7 +24,11 @@ export const getProfileDetails = async (req, res) => {
     messages: `Hello Future`,
     status: `OK`,
     payload: {
-      empty: true,
+      avatar: profile.Profile.avatar,
+      bio: profile.Profile.bio,
+      name: profile.Profile.name,
+      email: profile.Profile.email,
+      joinedSince: profile.Profile.createdAt,
     },
   };
   return res.send(responseObject);
@@ -21,16 +36,21 @@ export const getProfileDetails = async (req, res) => {
 
 export const updateProfileDetails = async (req, res) => {
   const { assignee } = req;
-  const { name, avatar, bio } = req.body;
+  const { name, avatar, bio, email } = req.body;
 
-  await prisma.profile.update({
+  await prisma.user.update({
     where: {
-      email: assignee,
+      identification: assignee,
     },
     data: {
-      name: name,
-      avatar: `https://avatars.dicebear.com/api/micah/${avatar}.svg`,
-      bio: bio,
+      Profile: {
+        update: {
+          name: name,
+          email: email,
+          avatar: avatar,
+          bio: bio,
+        },
+      },
     },
   });
 
@@ -38,7 +58,10 @@ export const updateProfileDetails = async (req, res) => {
     messages: `Hello Future`,
     status: `OK`,
     payload: {
-      empty: true,
+      avatar: avatar,
+      bio: bio,
+      name: name,
+      email: email,
     },
   };
   return res.send(responseObject);

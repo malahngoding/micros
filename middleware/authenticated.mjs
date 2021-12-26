@@ -9,7 +9,8 @@ export const authenticated = async (req, res) => {
       config.insteadToken
     );
     const decryptedData = JSON.parse(bytes.toString(CryptoJs.enc.Utf8));
-    req.assignee = decryptedData.email;
+
+    req.assignee = decryptedData.id;
   } catch (error) {
     const responseObject = {
       messages: `Unauthorized!`,

@@ -24,7 +24,7 @@ model Profile {
 
 model User {
   id             Int      @id @default(autoincrement())
-  identification String   @unique @default(uuid())
+  identification String   @unique
   Profile        Profile?
   createdAt      DateTime @default(now()) @db.Timestamp(6)
   updatedAt      DateTime @default(now()) @db.Timestamp(6)
