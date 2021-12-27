@@ -1,46 +1,33 @@
 import { prisma } from "../database/prisma.mjs";
 
-export const getBadgeList = async (_, res) => {
+export const getBadgeList = async (req, res) => {
   const { assignee } = req;
-
-  const responseObject = {
-    messages: `Hello Future`,
-    status: `OK`,
-    payload: {
-      badge: [
-        {
-          title: `Solidity`,
-          description: `Get 10 e 265 QT per second`,
-          image: `https://img.rarible.com/prod/video/upload/t_big/prod-itemAnimations/TEZOS-KT18pVpRXKPY2c4U2yFEGSH3ZnhB2kL8kwXS:7301/2f83f515`,
-        },
-        {
-          title: `Pragma`,
-          description: `Play the game for 365 days`,
-          image: `https://img.rarible.com/prod/video/upload/t_big/prod-itemAnimations/TEZOS-KT18pVpRXKPY2c4U2yFEGSH3ZnhB2kL8kwXS:6060/6c5252e`,
-        },
-        {
-          title: `Facade`,
-          description: `Level up your Shield up to level 250.`,
-          image: `https://img.rarible.com/prod/video/upload/t_big/prod-itemAnimations/TEZOS-KT18pVpRXKPY2c4U2yFEGSH3ZnhB2kL8kwXS:6958/54fa2f59`,
-        },
-      ],
+  const user = await prisma.user.findUnique({
+    where: {
+      identification: assignee,
     },
-  };
-  return res.send(responseObject);
-};
-
-export const grantBadge = async (req, res) => {
+    select: {
+      id: true,
+    },
+  });
+  const badge = await prisma.badgeForUser.findMany({
+    where: { userId: user.id },
+    select: {
+      badge: {
+        select: {
+          title: true,
+          description: true,
+          media: true,
+          createdAt: true,
+        },
+      },
+    },
+  });
   const responseObject = {
     messages: `Hello Future`,
     status: `OK`,
     payload: {
-      badge: [
-        {
-          title: ``,
-          assets: ``,
-          description: ``,
-        },
-      ],
+      list: badge,
     },
   };
   return res.send(responseObject);

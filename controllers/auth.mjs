@@ -4,6 +4,7 @@ import { generateSlug } from "random-word-slugs";
 
 import { prisma } from "../database/prisma.mjs";
 import { config } from "../config.mjs";
+import { badgeCoronation } from "../utils/badge-hook.mjs";
 
 export const issueToken = async (req, res) => {
   const { identification, provider } = req.body;
@@ -58,6 +59,7 @@ export const issueToken = async (req, res) => {
         Profile: true,
       },
     });
+    await badgeCoronation(`${dechiperedIdentification}__${provider}`, 1);
 
     const data = {
       id: `${dechiperedIdentification}__${provider}`,

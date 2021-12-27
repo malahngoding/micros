@@ -5,13 +5,7 @@ export const badge = {
   getBadgeList: {
     method: `GET`,
     url: `/getBadgeList`,
-    handler: controllers.homeIndex,
-    preHandler: [middleware.authenticated],
-  },
-  grantBadge: {
-    method: `POST`,
-    url: `/grantBadge`,
-    handler: controllers.homeIndex,
+    handler: controllers.getBadgeList,
     preHandler: [middleware.authenticated],
   },
 };

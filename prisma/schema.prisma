@@ -62,21 +62,21 @@ model QuestionAnswer {
 }
 
 model BadgeForUser {
-  id        Int         @id @default(autoincrement())
-  userId    Int
-  badge     BadgePool[]
-  user      User        @relation(fields: [userId], references: [id])
-  createdAt DateTime    @default(now()) @db.Timestamp(6)
-  updatedAt DateTime    @default(now()) @db.Timestamp(6)
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  badgePoolId Int
+  user        User      @relation(fields: [userId], references: [id])
+  badge       BadgePool @relation(fields: [badgePoolId], references: [id])
+  createdAt   DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime  @default(now()) @db.Timestamp(6)
 }
 
 model BadgePool {
-  id             Int           @id @default(autoincrement())
-  title          String
-  media          String
-  description    String
-  badgeForUserId Int?
-  BadgeForUser   BadgeForUser? @relation(fields: [badgeForUserId], references: [id])
-  createdAt      DateTime      @default(now()) @db.Timestamp(6)
-  updatedAt      DateTime      @default(now()) @db.Timestamp(6)
+  id           Int            @id @default(autoincrement())
+  title        String
+  media        String
+  BadgeForUser BadgeForUser[]
+  description  String
+  createdAt    DateTime       @default(now()) @db.Timestamp(6)
+  updatedAt    DateTime       @default(now()) @db.Timestamp(6)
 }
