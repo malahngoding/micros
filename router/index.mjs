@@ -2,8 +2,15 @@ import { hedera } from "./hedera.mjs";
 import { home } from "./home.mjs";
 import { auth } from "./auth.mjs";
 import { profile } from "./profile.mjs";
+import { badge } from "./badge.mjs";
 
-const renderRoutes = Object.values({ ...profile, ...hedera, ...home, ...auth });
+const renderRoutes = Object.values({
+  ...profile,
+  ...hedera,
+  ...home,
+  ...auth,
+  ...badge,
+});
 
 const router = (fastify, opts, next) => {
   fastify.decorateRequest(`user`, null);

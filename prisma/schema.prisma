@@ -23,11 +23,12 @@ model Profile {
 }
 
 model User {
-  id             Int      @id @default(autoincrement())
-  identification String   @unique
+  id             Int            @id @default(autoincrement())
+  identification String         @unique
   Profile        Profile?
-  createdAt      DateTime @default(now()) @db.Timestamp(6)
-  updatedAt      DateTime @default(now()) @db.Timestamp(6)
+  createdAt      DateTime       @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime       @default(now()) @db.Timestamp(6)
+  BadgeForUser   BadgeForUser[]
 }
 
 model QuestionGroup {
@@ -58,4 +59,24 @@ model QuestionAnswer {
   questionDetailId Int?
   createdAt        DateTime        @default(now()) @db.Timestamp(6)
   updatedAt        DateTime        @default(now()) @db.Timestamp(6)
+}
+
+model BadgeForUser {
+  id        Int         @id @default(autoincrement())
+  userId    Int
+  badge     BadgePool[]
+  user      User        @relation(fields: [userId], references: [id])
+  createdAt DateTime    @default(now()) @db.Timestamp(6)
+  updatedAt DateTime    @default(now()) @db.Timestamp(6)
+}
+
+model BadgePool {
+  id             Int           @id @default(autoincrement())
+  title          String
+  media          String
+  description    String
+  badgeForUserId Int?
+  BadgeForUser   BadgeForUser? @relation(fields: [badgeForUserId], references: [id])
+  createdAt      DateTime      @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime      @default(now()) @db.Timestamp(6)
 }
