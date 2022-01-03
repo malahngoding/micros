@@ -31,4 +31,9 @@ export const hedera = {
     url: `/createNFT`,
     handler: controllers.createNFT,
   },
+  createFungibleToken: {
+    method: `POST`,
+    url: `/createFungibleToken`,
+    handler: controllers.createFungibleToken,
+  },
 };
