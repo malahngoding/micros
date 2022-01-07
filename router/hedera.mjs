@@ -44,4 +44,10 @@ export const hedera = {
     handler: controllers.createFungibleToken,
     preHandler: [middleware.authenticated],
   },
+  testFungibleToken: {
+    method: `POST`,
+    url: `/testFungibleToken`,
+    handler: controllers.testFungibleToken,
+    preHandler: [middleware.authenticated],
+  },
 };

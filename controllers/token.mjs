@@ -7,6 +7,9 @@ import {
   AccountId,
   TokenMintTransaction,
   TokenNftInfoQuery,
+  TokenDeleteTransaction,
+  TransferTransaction,
+  Hbar,
 } from "@hashgraph/sdk";
 import { generateSlug } from "random-word-slugs";
 import { config } from "../config.mjs";
@@ -113,6 +116,40 @@ export const createFungibleToken = async (req, res) => {
     status: `OK`,
     payload: {
       empty: `${supplyKey}`,
+    },
+  };
+
+  return res.send(responseObject);
+};
+
+export const testFungibleToken = async (_, res) => {
+  const client = Client.forTestnet().setOperator(
+    config.accountId,
+    config.privateKey
+  );
+  const newAccountId = `0.0.26304439`;
+  //Create the transfer transaction
+  const sendHbar = await new TransferTransaction()
+    .addHbarTransfer(
+      AccountId.fromString(config.accountId),
+      Hbar.fromTinybars(-1000)
+    )
+    .addHbarTransfer(newAccountId, Hbar.fromTinybars(1000))
+    .execute(client);
+
+  const transactionReceipt = await sendHbar.getReceipt(client);
+
+  const queryCost = await new AccountBalanceQuery()
+    .setAccountId(newAccountId)
+    .getCost(client);
+
+  const responseObject = {
+    messages: `The transfer transaction from faucet account to the ${newAccountId} was: 
+      ${transactionReceipt.status.toString()}`,
+    status: `OK`,
+    payload: {
+      transfer: `Transfered 100 HBAR to ${newAccountId}`,
+      const: `The cost of query is: ${queryCost}`,
     },
   };
 
