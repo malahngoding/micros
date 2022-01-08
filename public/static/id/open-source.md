@@ -18,3 +18,7 @@ publishedAt: "11 Desember 2021"
 ### Filaments
 
 [Filaments](https://github.com/malahngoding/filaments) merupakan eksperimental api server dari Malah Ngoding Spaces. Dibuat dengan menggunakan bahasa Go.
+
+### Sideways
+
+[Sideways](https://github.com/malahngoding/sideways) merupakan eksperimental smart contracts dari Malah Ngoding. Dibuat dengan menggunakan bahasa Solidity. Aktif di Testnet Ethereum Rinkeby dan Testnet Hedera Hashgraph.

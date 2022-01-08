@@ -18,3 +18,7 @@ publishedAt: "11 December 2021"
 ### Filaments
 
 [Filaments](https://github.com/malahngoding/filaments) our experimental API service built with Go.
+
+### Sideways
+
+[Sideways](https://github.com/malahngoding/sideways) our experimental and playground for smart contracts development. Dibuat dengan menggunakan bahasa Solidity with Hardhat tooling. Actively brewing on both Ethereum Rinkeby and Hedera Hashgraph Testnet.
