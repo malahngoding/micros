@@ -5,7 +5,8 @@
     "db:seed": "npx prisma db seed",
     "dev": "nodemon start.mjs",
     "start": "node start.mjs",
-    "db:start": "npx prisma migrate deploy"
+    "db:start": "npx prisma migrate deploy",
+    "postinstall": "npx prisma generate"
   },
   "prisma": {
     "seed": "node database/seeds.mjs"
