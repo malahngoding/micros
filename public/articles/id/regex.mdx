@@ -1,0 +1,22 @@
+---
+id: 2
+title: "Regex"
+image: "https://images.unsplash.com/photo-1619431843665-54babc76ac8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop"
+description: "Malah Ngoding is a suitable and beginner friendly platform for learning how to code for web and mobile platform."
+published: "18 January 2022"
+draft: false
+---
+
+# RegEx
+
+regular expression
+
+"mantap@gmail.com"
+const re =
+/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)\*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+const mantap = "pancaing";
+const mantap2 = "pancaing@gmail.com";
+
+mantap.test(re) // return false
+mantap2.test(re) // return true

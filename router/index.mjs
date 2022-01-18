@@ -1,6 +1,7 @@
+import { auth } from "./auth.mjs";
+import { content } from "./content.mjs";
 import { hedera } from "./hedera.mjs";
 import { home } from "./home.mjs";
-import { auth } from "./auth.mjs";
 import { profile } from "./profile.mjs";
 import { badge } from "./badge.mjs";
 
@@ -10,6 +11,7 @@ const renderRoutes = Object.values({
   ...home,
   ...auth,
   ...badge,
+  ...content,
 });
 
 const router = (fastify, opts, next) => {
