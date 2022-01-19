@@ -30,14 +30,15 @@ const getAllFilesRecursively = (folder) =>
     flattenArray
   )(folder);
 
-export const getArticles = async (req, res) => {
+export const getContents = async (req, res) => {
   const offset = req.query.offset;
   const limit = req.query.limit;
   const lang = req.query.lang;
+  const type = req.params.type;
 
-  const files = getAllFilesRecursively(`./public/articles/${lang}`);
+  const files = getAllFilesRecursively(`./public/${type}/${lang}`);
 
-  const prefixPaths = path.join(`./public/articles/${lang}`);
+  const prefixPaths = path.join(`./public/${type}/${lang}`);
 
   let allFrontMatter = [];
   files.forEach((file) => {
@@ -60,8 +61,8 @@ export const getArticles = async (req, res) => {
     messages: `Hello Articles`,
     status: `OK`,
     payload: {
-      articles: allFrontMatter,
-      next: `/getArticles?offset=${
+      [type]: allFrontMatter,
+      next: `/getContents/${type}?offset=${
         parseInt(offset) + parseInt(limit)
       }&limit=${limit}&lang=${lang}`,
     },
@@ -69,14 +70,15 @@ export const getArticles = async (req, res) => {
   return res.send(responseObject);
 };
 
-export const getArticlesPath = async (req, res) => {
+export const getContentsPath = async (req, res) => {
   const offset = req.query.offset;
   const limit = req.query.limit;
   const lang = req.query.lang;
+  const type = req.params.type;
 
-  const files = getAllFilesRecursively(`./public/articles/${lang}`);
+  const files = getAllFilesRecursively(`./public/${type}/${lang}`);
 
-  const prefixPaths = path.join(`./public/articles/${lang}`);
+  const prefixPaths = path.join(`./public/${type}/${lang}`);
 
   let allPaths = [];
   files.forEach((file) => {
@@ -94,8 +96,8 @@ export const getArticlesPath = async (req, res) => {
     messages: `Hello Articles Path`,
     status: `OK`,
     payload: {
-      articlesPath: allPaths,
-      next: `/getArticlesPath?offset=${
+      path: allPaths,
+      next: `/getContentsPath/${type}?offset=${
         parseInt(offset) + parseInt(limit)
       }&limit=${limit}&lang=${lang}`,
     },

@@ -1,14 +1,14 @@
 import * as controllers from "../controllers/index.mjs";
 
 export const content = {
-  getArticles: {
+  getContents: {
     method: `GET`,
-    url: `/getArticles`,
-    handler: controllers.getArticles,
+    url: `/getContents/:type`,
+    handler: controllers.getContents,
   },
-  getArticlesPath: {
+  getContentsPath: {
     method: `GET`,
-    url: `/getArticlesPath`,
-    handler: controllers.getArticlesPath,
+    url: `/getContentsPath/:type`,
+    handler: controllers.getContentsPath,
   },
 };

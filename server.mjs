@@ -9,7 +9,13 @@ import { config } from "./config.mjs";
 import { router } from "./router/index.mjs";
 
 const server = fastify({
-  logger: { level: `info` },
+  logger: {
+    prettyPrint: {
+      translateTime: "SYS:h:MM:ss TT Z o",
+      colorize: true,
+      ignore: "pid,hostname",
+    },
+  },
 });
 
 let __dirname = path.resolve(path.dirname(""));
