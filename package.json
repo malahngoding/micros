@@ -26,6 +26,7 @@
     "nodemon": "^2.0.15",
     "pino-pretty": "^7.3.0",
     "random-word-slugs": "^0.1.6",
-    "randomstring": "^1.2.1"
+    "randomstring": "^1.2.1",
+    "web3": "^1.7.0"
   }
 }
