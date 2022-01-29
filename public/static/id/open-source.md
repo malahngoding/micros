@@ -21,4 +21,4 @@ publishedAt: "11 Desember 2021"
 
 ### Sideways
 
-[Sideways](https://github.com/malahngoding/sideways) merupakan eksperimental smart contracts dari Malah Ngoding. Dibuat dengan menggunakan bahasa Solidity. Aktif di Testnet Ethereum Rinkeby dan Testnet Hedera Hashgraph.
+[Sideways](https://github.com/malahngoding/sideways) merupakan eksperimental smart contracts dari Malah Ngoding. Dibuat dengan menggunakan bahasa Solidity. Aktif di Testnet Polygon Mumbai dan Testnet Hedera Hashgraph.
