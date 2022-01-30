@@ -4,6 +4,7 @@ import { hedera } from "./hedera.mjs";
 import { home } from "./home.mjs";
 import { profile } from "./profile.mjs";
 import { badge } from "./badge.mjs";
+import { flashCard } from "./flash-card.mjs";
 
 const renderRoutes = Object.values({
   ...profile,
@@ -12,6 +13,7 @@ const renderRoutes = Object.values({
   ...auth,
   ...badge,
   ...content,
+  ...flashCard,
 });
 
 const router = (fastify, opts, next) => {
