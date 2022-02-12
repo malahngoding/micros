@@ -48,7 +48,22 @@ export const getCurrentUserFlashCardStatus = async (_, res) => {
         correctAnswer: 0.1,
         wrongAnswer: 0.1,
         accuracy: 0.1,
+        currentPoint: 150,
+        currentHash: `ab70e554f095d91f6d4c2774d9e059b14066addb84808a28f21d9a71a`,
       },
+    },
+  };
+  return res.send(responseObject);
+};
+
+export const getCurrentFlashCardBlock = async (req, res) => {
+  const hash = req.params.hash;
+  const responseObject = {
+    messages: `Hello FlashCard Question Block`,
+    status: `OK`,
+    payload: {
+      groupName: `Test Question Group Name ${hash}`,
+      questions: [],
     },
   };
   return res.send(responseObject);

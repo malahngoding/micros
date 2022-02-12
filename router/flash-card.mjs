@@ -13,4 +13,10 @@ export const flashCard = {
     handler: controllers.getCurrentUserFlashCardStatus,
     preHandler: [middleware.authenticated],
   },
+  getCurrentFlashCardBlock: {
+    method: `GET`,
+    url: `/getCurrentFlashCardBlock/:hash`,
+    handler: controllers.getCurrentFlashCardBlock,
+    preHandler: [middleware.authenticated],
+  },
 };
