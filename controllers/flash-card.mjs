@@ -1,5 +1,6 @@
 import { generateSlug } from "random-word-slugs";
 import randomstring from "randomstring";
+import { prisma } from "../database/prisma.mjs";
 
 export const getFlashCardRanking = async (_, res) => {
   const list = [];
@@ -58,12 +59,38 @@ export const getCurrentUserFlashCardStatus = async (_, res) => {
 
 export const getCurrentFlashCardBlock = async (req, res) => {
   const hash = req.params.hash;
+
+  const currentId = 1;
+  const data = await prisma.questionGroup.findUnique({
+    where: {
+      id: currentId,
+    },
+    select: {
+      id: true,
+      groupName: true,
+      questionTag: true,
+      QuestionDetail: {
+        select: {
+          questionGroupId: true,
+          questionString: true,
+          QuestionAnswer: {
+            select: {
+              order: true,
+              answerString: true,
+              isCorrect: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
   const responseObject = {
     messages: `Hello FlashCard Question Block`,
     status: `OK`,
     payload: {
       groupName: `Test Question Group Name ${hash}`,
-      questions: [],
+      questions: data,
     },
   };
   return res.send(responseObject);
