@@ -8,9 +8,4 @@ export const badge = {
     handler: controllers.getBadgeList,
     preHandler: [middleware.authenticated],
   },
-  mintBadge: {
-    method: `GET`,
-    url: `/mintBadge`,
-    handler: controllers.mintBadge,
-  },
 };

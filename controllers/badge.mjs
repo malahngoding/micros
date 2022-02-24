@@ -32,22 +32,3 @@ export const getBadgeList = async (req, res) => {
   };
   return res.send(responseObject);
 };
-
-import Web3 from "web3";
-
-export const mintBadge = async (req, res) => {
-  const web3Providers = new Web3.providers.HttpProvider(
-    "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
-  );
-  const web3 = new Web3(web3Providers);
-  const result = await web3.eth.getBlockNumber();
-
-  const responseObject = {
-    messages: `Hello Future`,
-    status: `OK`,
-    payload: {
-      list: `Latest Ethereum Block is ${result}`,
-    },
-  };
-  return res.send(responseObject);
-};
