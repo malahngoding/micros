@@ -50,15 +50,7 @@ export const issueToken = async (req, res) => {
         },
       },
     });
-    const user = await prisma.user.findUnique({
-      where: {
-        identification: `${dechiperedIdentification}__${provider}`,
-      },
-      select: {
-        identification: true,
-        Profile: true,
-      },
-    });
+
     await badgeCoronation(`${dechiperedIdentification}__${provider}`, 1);
 
     const data = {
