@@ -7,7 +7,7 @@ import { config } from "../config.mjs";
 import { badgeCoronation } from "../utils/badge-hook.mjs";
 
 export const issueToken = async (req, res) => {
-  const { identification, provider } = req.body;
+  const { identification, provider, name, email } = req.body;
 
   const bytes = CryptoJs.AES.decrypt(identification, config.insteadToken);
   const dechiperedIdentification = bytes.toString(CryptoJs.enc.Utf8);
@@ -26,26 +26,20 @@ export const issueToken = async (req, res) => {
     await prisma.user.create({
       data: {
         identification: `${dechiperedIdentification}__${provider}`,
+        userName: generateSlug(3, {
+          format: `camel`,
+          partsOfSpeech: ["adjective", "adjective", "noun"],
+          categories: {
+            adjective: ["color", "appearance", "quantity"],
+            noun: ["animals", "thing", "technology"],
+          },
+        }),
         Profile: {
           create: {
-            name: generateSlug(3, {
-              format: `title`,
-              partsOfSpeech: ["adjective", "adjective", "noun"],
-              categories: {
-                adjective: ["color", "appearance", "quantity"],
-                noun: ["animals", "thing", "technology"],
-              },
-            }),
-            email: `${generateSlug(2, {
-              format: `kebab`,
-              partsOfSpeech: ["adjective", "noun"],
-              categories: {
-                adjective: ["color", "appearance", "quantity"],
-                noun: ["animals", "thing", "technology"],
-              },
-            })}@malahngoding.com`,
-            avatar: ` ${randomstring.generate(14)} `,
-            bio: "",
+            name: name,
+            email: email,
+            avatar: `${randomstring.generate(14)}`,
+            bio: ``,
           },
         },
       },
