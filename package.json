@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@hashgraph/sdk": "^2.9.1",
+    "@mgcrea/fastify-request-logger": "^0.5.2",
+    "@mgcrea/pino-pretty-compact": "^0.5.0",
     "@prisma/client": "^3.10.0",
     "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",

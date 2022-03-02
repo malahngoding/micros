@@ -7,12 +7,19 @@ export const badgeCoronation = async (awardee, type) => {
     },
     select: {
       id: true,
+      BadgeForUser: {
+        select: {
+          badgePoolId: true,
+        },
+      },
     },
   });
-  await prisma.badgeForUser.create({
-    data: {
-      userId: user.id,
-      badgePoolId: type,
-    },
-  });
+  if (!user.BadgeForUser.includes({ badgePoolId: type })) {
+    await prisma.badgeForUser.create({
+      data: {
+        userId: user.id,
+        badgePoolId: type,
+      },
+    });
+  }
 };

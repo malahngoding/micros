@@ -73,11 +73,12 @@ model BadgeForUser {
 }
 
 model BadgePool {
-  id           Int            @id @default(autoincrement())
-  title        String
-  media        String
-  BadgeForUser BadgeForUser[]
-  description  String
-  createdAt    DateTime       @default(now()) @db.Timestamp(6)
-  updatedAt    DateTime       @default(now()) @db.Timestamp(6)
+  id            Int            @id @default(autoincrement())
+  title         String
+  media         String
+  BadgeForUser  BadgeForUser[]
+  descriptionEn String         @db.VarChar(255)
+  descriptionId String         @db.VarChar(255)
+  createdAt     DateTime       @default(now()) @db.Timestamp(6)
+  updatedAt     DateTime       @default(now()) @db.Timestamp(6)
 }

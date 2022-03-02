@@ -16,7 +16,8 @@ export const getBadgeList = async (req, res) => {
       badge: {
         select: {
           title: true,
-          description: true,
+          descriptionEn: true,
+          descriptionId: true,
           media: true,
           createdAt: true,
         },

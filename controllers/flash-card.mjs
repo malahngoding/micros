@@ -1,6 +1,7 @@
 import { generateSlug } from "random-word-slugs";
 import randomstring from "randomstring";
 import { prisma } from "../database/prisma.mjs";
+import { badgeCoronation } from "../utils/badge-hook.mjs";
 
 export const getFlashCardRanking = async (_, res) => {
   const list = [];
@@ -59,6 +60,10 @@ export const getCurrentUserFlashCardStatus = async (_, res) => {
 
 export const getCurrentFlashCardBlock = async (req, res) => {
   const hash = req.params.hash;
+  const assignee = req.assignee;
+
+  const flashCardBadgeId = 3; // Check DB
+  await badgeCoronation(assignee, flashCardBadgeId);
 
   const currentId = 1;
   const data = await prisma.questionGroup.findUnique({
