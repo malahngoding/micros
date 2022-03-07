@@ -42,6 +42,12 @@ export const issueToken = async (req, res) => {
             bio: ``,
           },
         },
+        WalletForUser: {
+          create: {
+            evm: ``,
+            hedera: ``,
+          },
+        },
       },
     });
 

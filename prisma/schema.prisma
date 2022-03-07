@@ -30,6 +30,8 @@ model User {
   createdAt      DateTime       @default(now()) @db.Timestamp(6)
   updatedAt      DateTime       @default(now()) @db.Timestamp(6)
   BadgeForUser   BadgeForUser[]
+  WalletForUser  WalletForUser?
+
 }
 
 model QuestionGroup {
@@ -70,6 +72,16 @@ model BadgeForUser {
   badge       BadgePool @relation(fields: [badgePoolId], references: [id])
   createdAt   DateTime  @default(now()) @db.Timestamp(6)
   updatedAt   DateTime  @default(now()) @db.Timestamp(6)
+}
+
+model WalletForUser {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  evm       String   @default("") @db.VarChar(255)
+  hedera    String   @default("") @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @default(now()) @db.Timestamp(6)
 }
 
 model BadgePool {

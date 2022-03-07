@@ -66,3 +66,29 @@ export const updateProfileDetails = async (req, res) => {
   };
   return res.send(responseObject);
 };
+
+export const getProfileWallets = async (req, res) => {
+  const { assignee } = req;
+  const user = await prisma.user.findUnique({
+    where: {
+      identification: assignee,
+    },
+    select: {
+      id: true,
+    },
+  });
+  const wallets = await prisma.walletForUser.findUnique({
+    where: {
+      userId: user.id,
+    },
+  });
+
+  const responseObject = {
+    messages: `Hello Wallets`,
+    status: `OK`,
+    payload: {
+      wallets: [wallets.evm, wallets.hedera],
+    },
+  };
+  return res.send(responseObject);
+};

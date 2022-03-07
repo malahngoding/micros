@@ -14,4 +14,10 @@ export const profile = {
     handler: controllers.getProfileDetails,
     preHandler: [middleware.authenticated],
   },
+  getProfileWallets: {
+    method: `GET`,
+    url: `/getProfileWallets`,
+    handler: controllers.getProfileWallets,
+    preHandler: [middleware.authenticated],
+  },
 };
