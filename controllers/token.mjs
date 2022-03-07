@@ -95,11 +95,11 @@ export const createFungibleToken = async (req, res) => {
   const supplyKey = PrivateKey.generate();
 
   let tokenCreateTx = await new TokenCreateTransaction()
-    .setTokenName("Malah Ngoding Token")
+    .setTokenName("b5ef6c8b39db0cd25f6f683a1425ec6f Token")
     .setTokenSymbol("MNT")
     .setTokenType(TokenType.FungibleCommon)
     .setDecimals(2)
-    .setTokenMemo("Malah Ngoding Token")
+    .setTokenMemo("b5ef6c8b39db0cd25f6f683a1425ec6f Token")
     .setInitialSupply(10000)
     .setTreasuryAccountId(treasuryId)
     .setSupplyType(TokenSupplyType.Infinite)
