@@ -37,7 +37,7 @@ export const createNFT = async (_, res) => {
       })
     )
     .setTokenSymbol("MNT")
-    .setTokenMemo(`Minted from Malah Ngoding Micros at ${new Date()}`)
+    .setTokenMemo(`Minted from Micros at ${new Date()}`)
     .setTokenType(TokenType.NonFungibleUnique)
     .setDecimals(0)
     .setInitialSupply(0)
