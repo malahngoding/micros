@@ -1,6 +1,8 @@
 import CryptoJs from "crypto-js";
 import randomstring from "randomstring";
 import { generateSlug } from "random-word-slugs";
+import * as jose from "jose";
+import { createSecretKey } from "crypto";
 
 import { prisma } from "../database/prisma.mjs";
 import { config } from "../config.mjs";
@@ -57,34 +59,45 @@ export const issueToken = async (req, res) => {
       id: `${dechiperedIdentification}__${provider}`,
     };
 
-    const ciphertext = CryptoJs.AES.encrypt(
-      JSON.stringify(data),
-      config.insteadToken
-    ).toString();
+    const secretKey = createSecretKey(config.insteadToken);
+
+    const token = await new jose.EncryptJWT(data)
+      .setProtectedHeader({ alg: "dir", enc: "A256GCM" })
+      .setIssuedAt()
+      .setIssuer(config.microsURL)
+      .setAudience(config.spacesURL)
+      .setExpirationTime("2h")
+      .encrypt(secretKey);
 
     const responseObject = {
       messages: `Token issued`,
       status: `OK`,
       payload: {
-        token: `instead_${ciphertext}`,
+        token: `instead_${token}`,
       },
     };
+
     return res.send(responseObject);
   } else {
     const data = {
       id: `${dechiperedIdentification}__${provider}`,
     };
 
-    const ciphertext = CryptoJs.AES.encrypt(
-      JSON.stringify(data),
-      config.insteadToken
-    ).toString();
+    const secretKey = createSecretKey(config.insteadToken);
+
+    const token = await new jose.EncryptJWT(data)
+      .setProtectedHeader({ alg: "dir", enc: "A256GCM" })
+      .setIssuedAt()
+      .setIssuer(config.microsURL)
+      .setAudience(config.spacesURL)
+      .setExpirationTime("2h")
+      .encrypt(secretKey);
 
     const responseObject = {
       messages: `Token issued`,
       status: `OK`,
       payload: {
-        token: `instead_${ciphertext}`,
+        token: `instead_${token}`,
       },
     };
     return res.send(responseObject);

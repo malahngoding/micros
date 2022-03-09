@@ -12,6 +12,7 @@ specifiers:
   fastify-helmet: ^5.3.2
   fastify-static: ^4.5.0
   gray-matter: ^4.0.3
+  jose: ^4.6.0
   nft.storage: ^5.2.5
   node-fetch: ^3.2.0
   nodemon: ^2.0.15
@@ -32,6 +33,7 @@ dependencies:
   fastify-helmet: 5.3.2
   fastify-static: 4.5.0
   gray-matter: 4.0.3
+  jose: 4.6.0
   nft.storage: 5.2.5_node-fetch@3.2.0
   node-fetch: 3.2.0
   nodemon: 2.0.15
@@ -2762,6 +2764,10 @@ packages:
       p-defer: 3.0.0
       p-fifo: 1.0.0
       readable-stream: 3.6.0
+    dev: false
+
+  /jose/4.6.0:
+    resolution: {integrity: sha512-0hNAkhMBNi4soKSAX4zYOFV+aqJlEz/4j4fregvasJzEVtjDChvWqRjPvHwLqr5hx28Ayr6bsOs1Kuj87V0O8w==}
     dev: false
 
   /joycon/3.1.1:

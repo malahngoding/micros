@@ -15,6 +15,7 @@ const config = {
   dbUsername: process.env.DB_USERNAME,
   dbPassword: process.env.DB_PASSWORD,
   insteadToken: process.env.INSTEAD_TOKEN,
+  microsURL: process.env.MICROS_URL,
 };
 
 export { config };
