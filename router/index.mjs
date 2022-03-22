@@ -1,19 +1,21 @@
 import { auth } from "./auth.mjs";
+import { badge } from "./badge.mjs";
+import { camps } from "./camps.mjs";
 import { content } from "./content.mjs";
+import { flashCard } from "./flash-card.mjs";
 import { hedera } from "./hedera.mjs";
 import { home } from "./home.mjs";
 import { profile } from "./profile.mjs";
-import { badge } from "./badge.mjs";
-import { flashCard } from "./flash-card.mjs";
 
 const renderRoutes = Object.values({
-  ...profile,
-  ...hedera,
-  ...home,
   ...auth,
   ...badge,
+  ...camps,
   ...content,
   ...flashCard,
+  ...hedera,
+  ...home,
+  ...profile,
 });
 
 const router = (fastify, opts, next) => {

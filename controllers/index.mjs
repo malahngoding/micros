@@ -6,3 +6,4 @@ export * from "./profile.mjs";
 export * from "./badge.mjs";
 export * from "./content.mjs";
 export * from "./flash-card.mjs";
+export * from "./camps.mjs";
