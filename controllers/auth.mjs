@@ -46,8 +46,8 @@ export const issueToken = async (req, res) => {
         },
         WalletForUser: {
           create: {
-            evm: ``,
-            hedera: ``,
+            evm: name.startsWith(`0x`) ? name : ``,
+            hedera: name.startsWith(`0.`) ? name : ``,
           },
         },
       },
