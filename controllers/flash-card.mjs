@@ -2,6 +2,7 @@ import { generateSlug } from "random-word-slugs";
 import randomstring from "randomstring";
 import { prisma } from "../database/prisma.mjs";
 import { badgeCoronation } from "../utils/badge-hook.mjs";
+import { cipher, decipher } from "../utils/hash-tool.mjs";
 
 export const getFlashCardRanking = async (_, res) => {
   const list = [];
@@ -27,6 +28,7 @@ export const getFlashCardRanking = async (_, res) => {
 };
 
 export const getCurrentUserFlashCardStatus = async (_, res) => {
+  const hash = cipher(1);
   const responseObject = {
     messages: `Hello FlashCard Stats`,
     status: `OK`,
@@ -39,7 +41,7 @@ export const getCurrentUserFlashCardStatus = async (_, res) => {
         wrongAnswer: 0.1,
         accuracy: 0.1,
         currentPoint: 150,
-        currentHash: `ab70e554f095d91f6d4c2774d9e059b14066addb84808a28f21d9a71a`,
+        currentHash: hash,
       },
     },
   };
@@ -50,10 +52,10 @@ export const getCurrentFlashCardBlock = async (req, res) => {
   const hash = req.params.hash;
   const assignee = req.assignee;
 
-  const flashCardBadgeId = 3; // Check DB
+  const flashCardBadgeId = 3;
   await badgeCoronation(assignee, flashCardBadgeId);
 
-  const currentId = 1;
+  const currentId = parseInt(decipher(hash));
   const data = await prisma.questionGroup.findUnique({
     where: {
       id: currentId,
@@ -82,7 +84,7 @@ export const getCurrentFlashCardBlock = async (req, res) => {
     messages: `Hello FlashCard Question Block`,
     status: `OK`,
     payload: {
-      groupName: `Test Question Group Name ${hash}`,
+      groupName: `Test Question Group Name `,
       questions: data,
     },
   };
