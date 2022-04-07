@@ -76,7 +76,7 @@ model BadgeForUser {
 
 model WalletForUser {
   id        Int      @id @default(autoincrement())
-  userId    Int
+  userId    Int      @unique
   user      User     @relation(fields: [userId], references: [id])
   evm       String   @default("") @db.VarChar(255)
   hedera    String   @default("") @db.VarChar(255)
