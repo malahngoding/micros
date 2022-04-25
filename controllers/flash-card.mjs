@@ -84,7 +84,7 @@ export const getCurrentFlashCardBlock = async (req, res) => {
     messages: `Hello FlashCard Question Block`,
     status: `OK`,
     payload: {
-      groupName: `Test Question Group Name `,
+      groupName: data.groupName,
       questions: data,
     },
   };
