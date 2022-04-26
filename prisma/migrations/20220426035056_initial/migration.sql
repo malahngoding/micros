@@ -82,6 +82,7 @@ CREATE TABLE `WalletForUser` (
     `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     `updatedAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
 
+    UNIQUE INDEX `WalletForUser_userId_key`(`userId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -95,5 +96,24 @@ CREATE TABLE `BadgePool` (
     `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     `updatedAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
 
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `FlashCardUserStats` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `userId` INTEGER NOT NULL,
+    `finishedGroupQuestion` INTEGER NOT NULL DEFAULT 0,
+    `answeredQuestion` INTEGER NOT NULL DEFAULT 0,
+    `skippedQuestion` INTEGER NOT NULL DEFAULT 0,
+    `correctAnswer` INTEGER NOT NULL DEFAULT 0,
+    `wrongAnswer` INTEGER NOT NULL DEFAULT 0,
+    `accuracy` DOUBLE NOT NULL DEFAULT 0,
+    `currentPoint` INTEGER NOT NULL DEFAULT 0,
+    `currentHash` VARCHAR(191) NOT NULL,
+    `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `updatedAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+
+    UNIQUE INDEX `FlashCardUserStats_userId_key`(`userId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

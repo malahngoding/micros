@@ -1,22 +1,33 @@
 import { generateSlug } from "random-word-slugs";
-import randomstring from "randomstring";
 import { prisma } from "../database/prisma.mjs";
 import { badgeCoronation } from "../utils/badge-hook.mjs";
 import { cipher, decipher } from "../utils/hash-tool.mjs";
 
 export const getFlashCardRanking = async (_, res) => {
-  const list = [];
-  [1, 2, 3, 4, 5, 6].map((item) => {
-    list.push({
-      rank: item,
-      userName: generateSlug(2, { format: "title" }),
-      avatar: `${item} ${new Date()}`,
-      score: `${randomstring.generate({
-        length: 4,
-        charset: "numeric",
-      })}`,
-    });
+  const rankings = await prisma.flashCardUserStats.findMany({
+    select: {
+      user: {
+        select: {
+          userName: true,
+          Profile: {
+            select: {
+              avatar: true,
+            },
+          },
+        },
+      },
+      currentPoint: true,
+    },
   });
+  console.table(rankings);
+  const list = [
+    {
+      rank: 1,
+      userName: generateSlug(2, { format: "title" }),
+      avatar: `Test User`,
+      score: `10000`,
+    },
+  ];
   const responseObject = {
     messages: `Hello FlashCard List`,
     status: `OK`,

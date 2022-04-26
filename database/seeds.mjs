@@ -1,4 +1,5 @@
 import { initBadge } from "./badge.mjs";
+import { initFlash } from "./flash.mjs";
 import { allProfile, allUsers } from "./main.mjs";
 import { prisma } from "./prisma.mjs";
 import { initQuestion } from "./questions.mjs";
@@ -9,7 +10,8 @@ async function main() {
   await allProfile();
   await initBadge();
   await initQuestion();
-  await initUsers();
+  initUsers();
+  await initFlash();
 }
 
 main()

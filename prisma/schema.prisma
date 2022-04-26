@@ -23,15 +23,15 @@ model Profile {
 }
 
 model User {
-  id             Int            @id @default(autoincrement())
-  identification String         @unique
-  userName       String         @unique @db.VarChar(64)
-  Profile        Profile?
-  createdAt      DateTime       @default(now()) @db.Timestamp(6)
-  updatedAt      DateTime       @default(now()) @db.Timestamp(6)
-  BadgeForUser   BadgeForUser[]
-  WalletForUser  WalletForUser?
-
+  id                 Int                 @id @default(autoincrement())
+  identification     String              @unique
+  userName           String              @unique @db.VarChar(64)
+  Profile            Profile?
+  BadgeForUser       BadgeForUser[]
+  FlashCardUserStats FlashCardUserStats?
+  WalletForUser      WalletForUser?
+  createdAt          DateTime            @default(now()) @db.Timestamp(6)
+  updatedAt          DateTime            @default(now()) @db.Timestamp(6)
 }
 
 model QuestionGroup {
@@ -93,4 +93,20 @@ model BadgePool {
   descriptionId String         @db.VarChar(255)
   createdAt     DateTime       @default(now()) @db.Timestamp(6)
   updatedAt     DateTime       @default(now()) @db.Timestamp(6)
+}
+
+model FlashCardUserStats {
+  id                    Int      @id @default(autoincrement())
+  userId                Int      @unique
+  user                  User     @relation(fields: [userId], references: [id])
+  finishedGroupQuestion Int      @default(0)
+  answeredQuestion      Int      @default(0)
+  skippedQuestion       Int      @default(0)
+  correctAnswer         Int      @default(0)
+  wrongAnswer           Int      @default(0)
+  accuracy              Float    @default(0)
+  currentPoint          Int      @default(0)
+  currentHash           String
+  createdAt             DateTime @default(now()) @db.Timestamp(6)
+  updatedAt             DateTime @default(now()) @db.Timestamp(6)
 }
