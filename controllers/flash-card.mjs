@@ -18,21 +18,15 @@ export const getFlashCardRanking = async (_, res) => {
       },
       currentPoint: true,
     },
-  });
-  console.table(rankings);
-  const list = [
-    {
-      rank: 1,
-      userName: generateSlug(2, { format: "title" }),
-      avatar: `Test User`,
-      score: `10000`,
+    orderBy: {
+      currentPoint: `desc`,
     },
-  ];
+  });
   const responseObject = {
     messages: `Hello FlashCard List`,
     status: `OK`,
     payload: {
-      ranks: list,
+      rankings,
     },
   };
   return res.send(responseObject);
@@ -40,6 +34,7 @@ export const getFlashCardRanking = async (_, res) => {
 
 export const getCurrentUserFlashCardStatus = async (_, res) => {
   const hash = cipher(1);
+
   const responseObject = {
     messages: `Hello FlashCard Stats`,
     status: `OK`,
