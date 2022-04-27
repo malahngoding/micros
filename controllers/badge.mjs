@@ -18,6 +18,7 @@ export const getBadgeList = async (req, res) => {
           title: true,
           descriptionEn: true,
           descriptionId: true,
+          type: true,
           media: true,
           createdAt: true,
         },

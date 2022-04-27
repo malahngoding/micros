@@ -91,6 +91,7 @@ CREATE TABLE `BadgePool` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(191) NOT NULL,
     `media` VARCHAR(191) NOT NULL,
+    `type` VARCHAR(191) NOT NULL,
     `descriptionEn` VARCHAR(255) NOT NULL,
     `descriptionId` VARCHAR(255) NOT NULL,
     `createdAt` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
