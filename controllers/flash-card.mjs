@@ -35,6 +35,7 @@ export const getFlashCardRanking = async (_, res) => {
 
 export const getCurrentUserFlashCardStatus = async (req, res) => {
   const hash = cipher(1);
+  const groupName = `The Beginning`;
   const assignee = req.assignee;
 
   const user = await prisma.user.findUnique({
@@ -57,6 +58,7 @@ export const getCurrentUserFlashCardStatus = async (req, res) => {
       wrongAnswer: true,
       accuracy: true,
       currentPoint: true,
+      currentGroupName: true,
       currentHash: true,
     },
   });
@@ -71,6 +73,7 @@ export const getCurrentUserFlashCardStatus = async (req, res) => {
         wrongAnswer: 0,
         accuracy: 0,
         currentPoint: 0,
+        currentGroupName: groupName,
         currentHash: hash,
       },
     });
@@ -87,6 +90,7 @@ export const getCurrentUserFlashCardStatus = async (req, res) => {
           wrongAnswer: 0,
           accuracy: 0,
           currentPoint: 0,
+          currentGroupName: groupName,
           currentHash: hash,
         },
       },

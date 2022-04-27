@@ -11,7 +11,8 @@ export const initFlash = async () => {
       correctAnswer: 100,
       wrongAnswer: 10,
       accuracy: 99.99,
-      currentPoint: item * item * item,
+      currentPoint: (1 + item * item * item + 1) ^ item,
+      currentGroupName: `The Beginning`,
       currentHash: "0xhashhashhash",
     })
   );
