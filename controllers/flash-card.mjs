@@ -21,6 +21,7 @@ export const getFlashCardRanking = async (_, res) => {
     orderBy: {
       currentPoint: `desc`,
     },
+    take: 6,
   });
   const responseObject = {
     messages: `Hello FlashCard List`,
@@ -32,23 +33,72 @@ export const getFlashCardRanking = async (_, res) => {
   return res.send(responseObject);
 };
 
-export const getCurrentUserFlashCardStatus = async (_, res) => {
+export const getCurrentUserFlashCardStatus = async (req, res) => {
   const hash = cipher(1);
+  const assignee = req.assignee;
+
+  const user = await prisma.user.findUnique({
+    where: {
+      identification: assignee,
+    },
+    select: {
+      id: true,
+    },
+  });
+  const currentStats = await prisma.flashCardUserStats.findUnique({
+    where: {
+      userId: user.id,
+    },
+    select: {
+      finishedGroupQuestion: true,
+      answeredQuestion: true,
+      skippedQuestion: true,
+      correctAnswer: true,
+      wrongAnswer: true,
+      accuracy: true,
+      currentPoint: true,
+      currentHash: true,
+    },
+  });
+  if (currentStats === null) {
+    await prisma.flashCardUserStats.create({
+      data: {
+        userId: user.id,
+        finishedGroupQuestion: 0,
+        answeredQuestion: 0,
+        skippedQuestion: 0,
+        correctAnswer: 0,
+        wrongAnswer: 0,
+        accuracy: 0,
+        currentPoint: 0,
+        currentHash: hash,
+      },
+    });
+
+    const responseObject = {
+      messages: `Hello FlashCard Stats`,
+      status: `OK`,
+      payload: {
+        stats: {
+          finishedGroupQuestion: 0,
+          answeredQuestion: 0,
+          skippedQuestion: 0,
+          correctAnswer: 0,
+          wrongAnswer: 0,
+          accuracy: 0,
+          currentPoint: 0,
+          currentHash: hash,
+        },
+      },
+    };
+    return res.send(responseObject);
+  }
 
   const responseObject = {
     messages: `Hello FlashCard Stats`,
     status: `OK`,
     payload: {
-      stats: {
-        finishedGroupQuestion: 0.1,
-        answeredQuestion: 0.1,
-        skippedQuestion: 0.1,
-        correctAnswer: 0.1,
-        wrongAnswer: 0.1,
-        accuracy: 0.1,
-        currentPoint: 150,
-        currentHash: hash,
-      },
+      stats: currentStats,
     },
   };
   return res.send(responseObject);
