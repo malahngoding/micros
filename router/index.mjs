@@ -6,6 +6,7 @@ import { flashCard } from "./flash-card.mjs";
 import { hedera } from "./hedera.mjs";
 import { home } from "./home.mjs";
 import { profile } from "./profile.mjs";
+import { user } from "./user.mjs";
 
 const renderRoutes = Object.values({
   ...auth,
@@ -16,6 +17,7 @@ const renderRoutes = Object.values({
   ...hedera,
   ...home,
   ...profile,
+  ...user,
 });
 
 const router = (fastify, opts, next) => {
