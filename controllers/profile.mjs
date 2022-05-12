@@ -36,13 +36,14 @@ export const getProfileDetails = async (req, res) => {
 
 export const updateProfileDetails = async (req, res) => {
   const { assignee } = req;
-  const { name, avatar, bio, email } = req.body;
+  const { name, userName, avatar, bio, email } = req.body;
 
   await prisma.user.update({
     where: {
       identification: assignee,
     },
     data: {
+      userName: userName,
       Profile: {
         update: {
           name: name,

@@ -44,7 +44,7 @@ export const checkUserName = async (req, res) => {
       available: false,
     },
   };
-  return res.code(500).send(errorObject);
+  return res.send(errorObject);
 };
 
 export const editCurrentUserName = async (req, res) => {
