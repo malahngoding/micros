@@ -1,7 +1,7 @@
 import fastify from "fastify";
-import cors from "fastify-cors";
-import helmet from "fastify-helmet";
-import fstatic from "fastify-static";
+import cors from "@fastify/cors";
+import helmet from "@fastify/helmet";
+import fstatic from "@fastify/static";
 import fastifyRequestLogger from "@mgcrea/fastify-request-logger";
 import prettifier from "@mgcrea/pino-pretty-compact";
 
