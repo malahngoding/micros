@@ -1,3 +1,4 @@
+import Web3 from "web3";
 import { prisma } from "./prisma.mjs";
 
 export const initFlash = async () => {
@@ -13,7 +14,7 @@ export const initFlash = async () => {
       accuracy: 99.99,
       currentPoint: (1 + item * item * item + 1) ^ item,
       currentGroupName: `The Beginning`,
-      currentHash: "0xhashhashhash",
+      currentHash: Web3.utils.randomHex(32),
     })
   );
   await prisma.flashCardUserStats.createMany({

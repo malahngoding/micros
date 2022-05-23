@@ -14,8 +14,8 @@ export const flashCard = {
     preHandler: [middleware.authenticated],
   },
   getCurrentFlashCardBlock: {
-    method: `GET`,
-    url: `/getCurrentFlashCardBlock/:hash`,
+    method: `POST`,
+    url: `/getCurrentFlashCardBlock`,
     handler: controllers.getCurrentFlashCardBlock,
     preHandler: [middleware.authenticated],
   },
