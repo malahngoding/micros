@@ -1,6 +1,7 @@
 import Web3 from "web3";
 import { prisma } from "../database/prisma.mjs";
 import { badgeCoronation } from "../utils/badge-hook.mjs";
+import { hasher, lookup } from "../utils/hash-map.mjs";
 
 export const getFlashCardRanking = async (_, res) => {
   const rankings = await prisma.flashCardUserStats.findMany({
@@ -33,7 +34,7 @@ export const getFlashCardRanking = async (_, res) => {
 };
 
 export const getCurrentUserFlashCardStatus = async (req, res) => {
-  const hash = Web3.utils.randomHex(32);
+  const hash = hasher(1);
   const groupName = `The Beginning`;
   const assignee = req.assignee;
 
@@ -112,7 +113,7 @@ export const getCurrentFlashCardBlock = async (req, res) => {
   const flashCardBadgeId = 3;
   await badgeCoronation(assignee, flashCardBadgeId);
 
-  const currentId = hash;
+  const currentId = lookup(hash);
   const data = await prisma.questionGroup.findUnique({
     where: {
       id: currentId,
