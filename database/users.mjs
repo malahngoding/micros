@@ -28,6 +28,7 @@ export const initUsers = () => {
             email: `${randomSlug()}@malahngoding.com`,
             avatar: `${randomstring.generate(14)}`,
             bio: `Created for Test with id ${item}`,
+            fresh: true,
           },
         },
         BadgeForUser: {

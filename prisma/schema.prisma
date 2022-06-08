@@ -16,6 +16,7 @@ model Profile {
   email     String?  @unique @db.VarChar(255)
   avatar    String?  @db.VarChar(255)
   bio       String?
+  fresh     Boolean
   userId    Int      @unique
   User      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now()) @db.Timestamp(6)

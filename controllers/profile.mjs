@@ -15,6 +15,7 @@ export const getProfileDetails = async (req, res) => {
           name: true,
           email: true,
           createdAt: true,
+          fresh: true,
         },
       },
     },
@@ -29,6 +30,7 @@ export const getProfileDetails = async (req, res) => {
       name: profile.Profile.name,
       email: profile.Profile.email,
       joinedSince: profile.Profile.createdAt,
+      fresh: profile.Profile.fresh,
     },
   };
   return res.send(responseObject);

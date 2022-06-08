@@ -42,6 +42,7 @@ export const issueToken = async (req, res) => {
             email: email,
             avatar: `${randomstring.generate(14)}`,
             bio: ``,
+            fresh: true,
           },
         },
         WalletForUser: {
