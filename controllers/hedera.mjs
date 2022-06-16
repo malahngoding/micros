@@ -108,7 +108,7 @@ export const getMessageFromTopic = async (req, res) => {
     .setTopicId(topicId)
     .setStartTime(0)
     .subscribe(client, (message) => {
-      console.log(Buffer.from(message.contents, "utf8").toString());
+      console.debug(Buffer.from(message.contents, "utf8").toString());
     });
 
   const responseObject = {
