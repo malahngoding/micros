@@ -1,17 +1,17 @@
 ---
-id: 7
 title: "Membersihkan active port pada system linux"
 icon: "bash"
 tags: ["bash", "linux"]
 draft: false
 ---
 
-# Clear Port
-
-Script bash ini digunakan untuk mematikan port yang sudah berjalan
+Script bash ini digunakan untuk mematikan port yang sudah berjalan pada environment linux kamu.
 
 ```bash
 #bin/bash
+# fuser -k {port}/tcp;
+
+# Contoh
 fuser -k 4444/tcp;
 fuser -k 4001/tcp;
 fuser -k 9000/tcp;
