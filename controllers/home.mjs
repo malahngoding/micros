@@ -1,6 +1,8 @@
+import { enigmaEngine } from "../utils/enigma-engine.mjs";
+
 export const homeIndex = async (_, res) => {
   const responseObject = {
-    messages: `Hello Future`,
+    messages: `Hello ${enigmaEngine("abcde")}-${enigmaEngine("abcdefg")}`,
     status: `OK`,
     payload: {
       empty: true,
