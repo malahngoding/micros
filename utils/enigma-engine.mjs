@@ -9,6 +9,5 @@ export const enigmaEngine = (text) => {
   for (let index = 0; index < text.length; index++) {
     encryptedMessage.push(warpedMessage[(2 * (index + 1)) % text.length]);
   }
-  console.log(encryptedMessage);
   return encryptedMessage.join("");
 };
