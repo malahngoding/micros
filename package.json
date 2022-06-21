@@ -1,4 +1,8 @@
 {
+  "name": "@malahngoding/micros",
+  "version": "0.0.2",
+  "description": "Malah Ngoding Micros",
+  "private": true,
   "scripts": {
     "db:refresh": "npx prisma migrate reset",
     "db:migrate": "npx prisma migrate dev",
