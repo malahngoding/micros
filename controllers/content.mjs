@@ -52,9 +52,13 @@ export const getContents = async (req, res) => {
 
     const { data } = fm(source);
 
-    if (data.draft !== true) {
+    if (data.publish === true) {
       allFrontMatter.push({ ...data, slug: fileName.replace(".mdx", "") });
     }
+  });
+
+  allFrontMatter.sort((a, b) => {
+    return b.id - a.id;
   });
 
   const responseObject = {
