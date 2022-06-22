@@ -67,7 +67,7 @@ export const issueToken = async (req, res) => {
       .setIssuedAt()
       .setIssuer(config.microsURL)
       .setAudience(config.spacesURL)
-      .setExpirationTime("2h")
+      .setExpirationTime("6h")
       .encrypt(secretKey);
 
     const responseObject = {
@@ -91,7 +91,7 @@ export const issueToken = async (req, res) => {
       .setIssuedAt()
       .setIssuer(config.microsURL)
       .setAudience(config.spacesURL)
-      .setExpirationTime("2h")
+      .setExpirationTime("6h")
       .encrypt(secretKey);
 
     const responseObject = {

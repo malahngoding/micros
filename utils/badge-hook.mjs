@@ -14,7 +14,10 @@ export const badgeCoronation = async (awardee, type) => {
       },
     },
   });
-  if (!user.BadgeForUser.includes({ badgePoolId: type })) {
+  const duplicate = user.BadgeForUser.some(
+    (badgeForUser) => badgeForUser.badgePoolId === type
+  );
+  if (!duplicate) {
     await prisma.badgeForUser.create({
       data: {
         userId: user.id,
