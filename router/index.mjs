@@ -7,6 +7,7 @@ import { hedera } from "./hedera.mjs";
 import { home } from "./home.mjs";
 import { profile } from "./profile.mjs";
 import { user } from "./user.mjs";
+import consola from "../utils/debug.mjs";
 
 const renderRoutes = Object.values({
   ...auth,
@@ -24,7 +25,7 @@ const router = (fastify, opts, next) => {
   fastify.decorateRequest(`user`, null);
 
   fastify.addHook(`onRequest`, (req, res, next) => {
-    console.info(`onRequest`);
+    consola.info(`onRequest`);
     next();
   });
 
