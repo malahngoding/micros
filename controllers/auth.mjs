@@ -7,6 +7,7 @@ import { createSecretKey } from "crypto";
 import { prisma } from "../database/prisma.mjs";
 import { config } from "../config.mjs";
 import { badgeCoronation } from "../utils/badge-hook.mjs";
+import { findUserByIdentification } from "../model/user.model.mjs";
 
 export const issueToken = async (req, res) => {
   const { identification, provider, name, email } = req.body;
@@ -14,15 +15,9 @@ export const issueToken = async (req, res) => {
   const bytes = CryptoJs.AES.decrypt(identification, config.insteadToken);
   const dechiperedIdentification = bytes.toString(CryptoJs.enc.Utf8);
 
-  const user = await prisma.user.findUnique({
-    where: {
-      identification: `${dechiperedIdentification}__${provider}`,
-    },
-    select: {
-      identification: true,
-      Profile: true,
-    },
-  });
+  const user = await findUserByIdentification(
+    `${dechiperedIdentification}__${provider}`
+  );
 
   if (!user) {
     await prisma.user.create({

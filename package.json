@@ -4,13 +4,13 @@
   "description": "Malah Ngoding Micros",
   "private": true,
   "scripts": {
-    "db:refresh": "npx prisma migrate reset",
-    "db:migrate": "npx prisma migrate dev",
-    "db:seed": "npx prisma db seed",
+    "db:refresh": "pnpx prisma migrate reset",
+    "db:migrate": "pnpx prisma migrate dev",
+    "db:seed": "pnpx prisma db seed",
     "dev": "nodemon start.mjs",
     "start": "node start.mjs",
-    "db:start": "npx prisma migrate deploy",
-    "postinstall": "npx prisma generate",
+    "db:start": "pnpx prisma migrate deploy",
+    "postinstall": "pnpx prisma generate",
     "test": "jest"
   },
   "prisma": {
