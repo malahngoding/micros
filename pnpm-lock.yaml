@@ -16,7 +16,7 @@ specifiers:
   jose: ^4.9.0
   nft.storage: ^7.0.0
   node-fetch: ^3.2.10
-  nodemon: ^2.0.19
+  nodemon: ^2.0.20
   random-word-slugs: ^0.1.6
   randomstring: ^1.2.2
   web3: ^1.7.5
@@ -36,7 +36,7 @@ dependencies:
   jose: 4.9.0
   nft.storage: 7.0.0_node-fetch@3.2.10
   node-fetch: 3.2.10
-  nodemon: 2.0.19
+  nodemon: 2.0.20
   random-word-slugs: 0.1.6
   randomstring: 1.2.2
   web3: 1.7.5
@@ -4721,11 +4721,10 @@ packages:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
     dev: true
 
-  /nodemon/2.0.19:
-    resolution: {integrity: sha512-4pv1f2bMDj0Eeg/MhGqxrtveeQ5/G/UVe9iO6uTZzjnRluSA4PVWf8CW99LUPwGB3eNIA7zUFoP77YuI7hOc0A==}
+  /nodemon/2.0.20:
+    resolution: {integrity: sha512-Km2mWHKKY5GzRg6i1j5OxOHQtuvVsgskLfigG25yTtbyfRGn/GNvIbRyOf1PSCKJ2aT/58TiuUsuOU5UToVViw==}
     engines: {node: '>=8.10.0'}
     hasBin: true
-    requiresBuild: true
     dependencies:
       chokidar: 3.5.3
       debug: 3.2.7_supports-color@5.5.0

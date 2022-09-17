@@ -1,4 +1,4 @@
-import server from "./server.mjs";
+import server from "./micros.mjs";
 import { config } from "./config.mjs";
 import consola from "./utils/debug.mjs";
 
