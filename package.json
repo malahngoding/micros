@@ -1,42 +1,20 @@
 {
-  "name": "@malahngoding/micros",
-  "version": "0.3.8",
-  "description": "Malah Ngoding Micros",
-  "private": true,
+  "name": "micros",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "db:refresh": "pnpx prisma migrate reset",
-    "db:migrate": "pnpx prisma migrate dev",
-    "db:seed": "pnpx prisma db seed",
-    "dev": "nodemon start.mjs",
-    "start": "node start.mjs",
-    "db:start": "pnpx prisma migrate deploy",
-    "postinstall": "pnpx prisma generate",
-    "test": "jest"
+    "dev": "nodemon ./index.mjs"
   },
-  "prisma": {
-    "seed": "node database/seeds.mjs"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@fastify/cors": "^8.1.0",
-    "@fastify/helmet": "^9.1.0",
-    "@fastify/static": "^6.5.0",
-    "@hashgraph/sdk": "^2.18.0",
-    "@prisma/client": "^4.2.1",
-    "axios": "^0.27.2",
-    "consola": "^2.15.3",
-    "crypto-js": "^4.1.1",
-    "dotenv": "^16.0.1",
-    "fastify": "^4.5.3",
-    "gray-matter": "^4.0.3",
-    "jose": "^4.9.0",
-    "nft.storage": "^7.0.0",
-    "node-fetch": "^3.2.10",
-    "nodemon": "^2.0.20",
-    "random-word-slugs": "^0.1.6",
-    "randomstring": "^1.2.2",
-    "web3": "^1.7.5"
+    "@tinyhttp/app": "^2.0.23",
+    "@tinyhttp/logger": "^1.3.0",
+    "fastify": "^4.6.0"
   },
   "devDependencies": {
-    "jest": "^29.0.1"
+    "nodemon": "^2.0.20"
   }
 }
