@@ -4,17 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db:refresh": "pnpx prisma migrate reset",
+    "db:migrate": "pnpx prisma migrate dev",
+    "db:seed": "pnpx prisma db seed",
     "dev": "nodemon ./index.mjs"
+  },
+  "prisma": {
+    "seed": "node database/seeds.mjs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "@tinyhttp/app": "^2.0.23",
-    "@tinyhttp/logger": "^1.3.0",
-    "fastify": "^4.6.0"
+    "@prisma/client": "^4.3.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "prisma": "^4.3.1"
   }
 }

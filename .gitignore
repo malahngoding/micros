@@ -1,3 +1,5 @@
 node_modules
 .env
 .vercel
+prisma/data.db
+prisma/data.db-journal
