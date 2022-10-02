@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db:refresh": "pnpx prisma migrate reset",
-    "db:migrate": "pnpx prisma migrate dev",
-    "db:seed": "pnpx prisma db seed",
+    "db:refresh": "prisma migrate reset",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
     "dev": "nodemon ./index.mjs"
   },
   "prisma": {
