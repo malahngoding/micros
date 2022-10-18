@@ -1,23 +1,34 @@
 {
-  "name": "micros",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@malahngoding/micros",
+  "version": "0.9.19",
+  "description": "Malah Ngoding Spaces",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsup",
+    "serve": "node dist/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@fastify/autoload": "^5.4.1",
-    "fastify": "^4.9.0",
-    "fastify-plugin": "^4.3.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malahngoding/micros.git"
   },
+  "author": "Malah Ngoding Bot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malahngoding/micros/issues"
+  },
+  "homepage": "https://github.com/malahngoding/micros#readme",
+  "keywords": [
+    "fastify",
+    "typescript"
+  ],
   "devDependencies": {
-    "@types/node": "^18.11.0",
-    "esbuild": "^0.15.11",
-    "nodemon": "^2.0.20",
+    "tsup": "^6.3.0",
+    "tsx": "^3.10.3",
     "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@honojs/node-server": "^0.1.0",
+    "hono": "^2.2.5"
   }
 }
