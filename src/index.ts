@@ -1,10 +1,8 @@
 import { serve } from "@honojs/node-server";
-import { Hono } from "hono";
-
-const app = new Hono();
-app.get("/", (c) => c.text("Hono meets Node.js"));
+import app from "./config/boot";
+import { microsPort } from "./config/environments";
 
 serve({
   fetch: app.fetch,
-  port: 4444,
+  port: microsPort,
 });
