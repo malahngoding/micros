@@ -1,13 +1,33 @@
-import { Hono } from "hono";
-import { getHome, postHome } from "../modules/home.handler";
+import { getHome } from "../modules/home.handler";
+import type { HTTPMethods } from "fastify";
+import type { FastifyRequest } from "fastify";
+import type { FastifyReply } from "fastify";
 
-const home = new Hono();
-/*
-Home API Handler
---> /api/home
+const preHandler = async (
+  request: FastifyRequest,
+  reply: FastifyReply,
+  next: any
+) => {
+  console.log(1, new Date());
 
- */
-home.get("/", (c) => getHome(c));
-home.post("/", (c) => postHome(c));
+  next();
+};
 
-export default home;
+const preHandler2 = async (
+  request: FastifyRequest,
+  reply: FastifyReply,
+  next: any
+) => {
+  console.log(12, new Date());
+
+  next();
+};
+
+export const homeRouter = {
+  "/api/ping": {
+    method: "GET" as HTTPMethods,
+    url: `/api/ping`,
+    handler: getHome,
+    preHandler: [preHandler, preHandler2],
+  },
+};

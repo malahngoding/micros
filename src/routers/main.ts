@@ -1,14 +1,13 @@
-import { Hono } from "hono";
-import { pingBack } from "../modules/etc.handler";
-import auth from "./auth";
-import home from "./home";
+import type { FastifyInstance } from "fastify";
+import { homeRouter } from "./home";
 
-const mainRouter = new Hono();
-/*
-Router
+const renderRoutes = Object.values({
+  ...homeRouter,
+});
 
- */
-mainRouter.get("ping", (c) => pingBack(c));
-mainRouter.route("/auth", auth);
-mainRouter.route("/home", home);
-export default mainRouter;
+const router = (fastify: FastifyInstance, _opts: any, next: () => void) => {
+  renderRoutes.map((route) => fastify.route(route));
+  next();
+};
+
+export { router };

@@ -1,34 +1,13 @@
-import type { Context } from "hono";
-import { getAllConfig, writeConfig } from "../models/config";
+import { FastifyReply, FastifyRequest } from "fastify";
 
-export const getHome = async (c: Context) => {
-  const config = await getAllConfig();
-  return c.json({
-    data: config,
-    message: `Loud and Clear`,
+export const getHome = async (req: FastifyRequest, rep: FastifyReply) => {
+  console.log(2, new Date());
+  const responseObject = {
+    messages: `TEST_ECHO`,
     status: `OK`,
-  });
-};
-
-interface PostHomeBodyRequest {
-  key: string;
-  value: string;
-}
-
-export const postHome = async (c: Context) => {
-  const { key, value } = (await c.req.json()) as PostHomeBodyRequest;
-  if (key === undefined || value === undefined) {
-    c.status(400);
-    return c.json({
-      data: {},
-      message: `Request Malformed`,
-      status: `NOT_OK`,
-    });
-  }
-  const config = await writeConfig({ key: key, value: value });
-  return c.json({
-    data: config,
-    message: `Loud and Clear`,
-    status: `OK`,
-  });
+    payload: {
+      query: req.query,
+    },
+  };
+  return rep.send(responseObject);
 };

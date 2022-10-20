@@ -1,8 +1,3 @@
-import { serve } from "@honojs/node-server";
-import app from "./config/boot";
-import { microsPort } from "./config/environments";
+import { start } from "./config/core";
 
-serve({
-  fetch: app.fetch,
-  port: microsPort,
-});
+start();
