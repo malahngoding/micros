@@ -12,6 +12,7 @@ micros.register(router);
 
 export const start = async () => {
   try {
+    console.log(`Micros started at :${microsPort}`);
     await micros.listen({ port: microsPort });
   } catch (err) {
     micros.log.error(err);
