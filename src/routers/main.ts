@@ -1,7 +1,9 @@
 import type { FastifyInstance } from "fastify";
+import { authRouter } from "./auth";
 import { homeRouter } from "./home";
 
 const renderRoutes = Object.values({
+  ...authRouter,
   ...homeRouter,
 });
 
