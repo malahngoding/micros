@@ -1,7 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
+import { putEventOnAxiom } from "../db/axiom-ingest";
 
 export const getHome = async (req: FastifyRequest, rep: FastifyReply) => {
-  console.log(2, new Date());
+  await putEventOnAxiom();
   const responseObject = {
     messages: `TEST_ECHO`,
     status: `OK`,

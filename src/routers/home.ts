@@ -13,21 +13,11 @@ const preHandler = async (
   next();
 };
 
-const preHandler2 = async (
-  request: FastifyRequest,
-  reply: FastifyReply,
-  next: any
-) => {
-  console.log(12, new Date());
-
-  next();
-};
-
 export const homeRouter = {
   "/api/ping": {
     method: "GET" as HTTPMethods,
     url: `/api/ping`,
     handler: getHome,
-    preHandler: [preHandler, preHandler2],
+    preHandler: [preHandler],
   },
 };
