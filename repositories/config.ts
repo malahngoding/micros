@@ -1,4 +1,4 @@
-import { config } from "../db/init";
+import { config } from "../adapters/init";
 
 interface Configs {
   key: string;

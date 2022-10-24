@@ -4,10 +4,18 @@
   "description": "Malah Ngoding Spaces",
   "private": true,
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "db:refresh": "prisma migrate reset",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "dev": "tsx watch --no-cache  ./index.ts",
     "build": "tsup",
     "serve": "node dist/index.js",
+    "db:start": "prisma migrate deploy",
+    "postinstall": "prisma generate",
     "test": "tap"
+  },
+  "prisma": {
+    "seed": "tsx seeds/main.ts"
   },
   "repository": {
     "type": "git",
@@ -26,14 +34,16 @@
   "devDependencies": {
     "@types/node": "^18.11.1",
     "@types/tap": "^15.0.7",
+    "prisma": "^4.5.0",
     "tap": "^16.3.0",
     "tsup": "^6.3.0",
-    "tsx": "^3.10.3",
+    "tsx": "^3.10.4",
     "typescript": "^4.8.4"
   },
   "dependencies": {
     "@fastify/cors": "^8.1.0",
     "@fastify/helmet": "^10.0.2",
+    "@prisma/client": "^4.5.0",
     "axios": "^1.1.3",
     "deta": "^1.1.0",
     "dotenv": "^16.0.3",

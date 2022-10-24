@@ -3,20 +3,23 @@ lockfileVersion: 5.4
 specifiers:
   '@fastify/cors': ^8.1.0
   '@fastify/helmet': ^10.0.2
+  '@prisma/client': ^4.5.0
   '@types/node': ^18.11.1
   '@types/tap': ^15.0.7
   axios: ^1.1.3
   deta: ^1.1.0
   dotenv: ^16.0.3
   fastify: ^4.9.2
+  prisma: ^4.5.0
   tap: ^16.3.0
   tsup: ^6.3.0
-  tsx: ^3.10.3
+  tsx: ^3.10.4
   typescript: ^4.8.4
 
 dependencies:
   '@fastify/cors': 8.1.0
   '@fastify/helmet': 10.0.2
+  '@prisma/client': 4.5.0_prisma@4.5.0
   axios: 1.1.3
   deta: 1.1.0
   dotenv: 16.0.3
@@ -25,9 +28,10 @@ dependencies:
 devDependencies:
   '@types/node': 18.11.1
   '@types/tap': 15.0.7
+  prisma: 4.5.0
   tap: 16.3.0_typescript@4.8.4
   tsup: 6.3.0_typescript@4.8.4
-  tsx: 3.10.3
+  tsx: 3.10.4
   typescript: 4.8.4
 
 packages:
@@ -382,6 +386,28 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@prisma/client/4.5.0_prisma@4.5.0:
+    resolution: {integrity: sha512-B2cV0OPI1smhdYUxsJoLYQLoMlLH06MUxgFUWQnHodGMX98VRVXKmQE/9OcrTNkqtke5RC+YU24Szxd04tZA2g==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.5.0-43.0362da9eebca54d94c8ef5edd3b2e90af99ba452
+      prisma: 4.5.0
+    dev: false
+
+  /@prisma/engines-version/4.5.0-43.0362da9eebca54d94c8ef5edd3b2e90af99ba452:
+    resolution: {integrity: sha512-o7LyVx8PPJBLrEzLl6lpxxk2D5VnlM4Fwmrbq0NoT6pr5aa1OuHD9ZG+WJY6TlR/iD9bhmo2LNcxddCMr5Rv2A==}
+    dev: false
+
+  /@prisma/engines/4.5.0:
+    resolution: {integrity: sha512-4t9ir2SbQQr/wMCNU4YpHWp5hU14J2m3wHUZnGJPpmBF8YtkisxyVyQsKd1e6FyLTaGq8LOLhm6VLYHKqKNm+g==}
+    requiresBuild: true
 
   /@types/node/18.11.1:
     resolution: {integrity: sha512-bB9ptqoW+pKBjs0kJX/zUSUWCOWAyYXQsOgY6+HIEbnjYike3CAeDhxlQ4kDjCm/S9SRV66F49HY7gwJz0oWMg==}
@@ -1860,6 +1886,14 @@ packages:
       yaml: 1.10.2
     dev: true
 
+  /prisma/4.5.0:
+    resolution: {integrity: sha512-9Aeg4qiKlv9Wsjz4NO8k2CzRzlvS3A4FYVJ5+28sBBZ0eEwbiVOE/Jj7v6rZC1tFW2s4GSICQOAyuOjc6WsNew==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.5.0
+
   /process-on-spawn/1.0.0:
     resolution: {integrity: sha512-1WsPDsUSMmZH5LeMLegqkPDrsGgsWwk1Exipy2hvB0o/F0ASzbpIctSCcZIK1ykJvtTJULEH+20WOFjMvGnCTg==}
     engines: {node: '>=8'}
@@ -2340,8 +2374,8 @@ packages:
       - ts-node
     dev: true
 
-  /tsx/3.10.3:
-    resolution: {integrity: sha512-yni2/n09VMOihGw6fCTKAowvQZ7BOWRVlpW9RnJPDakoHqHIlpxWieUUr5fnQa3zWoR1Jb902Un4Bv/JsKQ4RQ==}
+  /tsx/3.10.4:
+    resolution: {integrity: sha512-sBxeSgUAPVqRgBPk6TY0yFiNDUlva9rA+Nj46oYEd89FXVD2MFWChFhybTtq7Qh1Ies/O75mQNwpLuO7m8gToA==}
     hasBin: true
     dependencies:
       '@esbuild-kit/cjs-loader': 2.4.0
