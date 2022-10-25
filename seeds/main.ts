@@ -1,4 +1,4 @@
-import { cockroachdb } from "../adapters/cockroachdb";
+import { cockroachdb } from "../adapters/prisma";
 
 async function main() {
   const payload = Array.from(Array(50000).keys()).map((item: number) => {
