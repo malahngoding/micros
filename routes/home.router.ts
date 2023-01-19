@@ -1,10 +1,10 @@
-import { getHome } from "../modules/home.handler";
+import { getHome } from "@controllers";
 import type { HTTPMethods } from "fastify";
 
 export const homeRouter = {
   "/api/ping": {
     method: "GET" as HTTPMethods,
-    url: `/api/ping`,
+    url: "/api/ping",
     handler: getHome,
   },
 };

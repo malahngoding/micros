@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@controllers": ["app/Http/Controllers/index.ts"],
+      "@middlewares": ["app/Http/Middlewares/index.ts"],
+      "@models": ["app/Models/index.ts"],
+      "@configs": ["config/index.ts"],
+      "@routers": ["routes/index.ts"]
+    }
+  }
+}

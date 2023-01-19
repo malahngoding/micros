@@ -1,9 +1,9 @@
-import fastify, { FastifyReply, FastifyRequest } from "fastify";
+import fastify from "fastify";
 import helmet from "@fastify/helmet";
 import cors from "@fastify/cors";
 
-import { microsPort, spacesURL } from "./environments";
-import { router } from "../routers/main";
+import { microsPort, spacesURL } from "@configs";
+import { router } from "@routers";
 
 const micros = fastify();
 micros.register(helmet, { global: true });
