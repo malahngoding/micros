@@ -2,9 +2,9 @@ import { getHome } from "@controllers";
 import type { HTTPMethods } from "fastify";
 
 export const homeRouter = {
-  "/api/ping": {
+  "/home": {
     method: "GET" as HTTPMethods,
-    url: "/ping",
+    url: "/home",
     handler: getHome,
   },
 };

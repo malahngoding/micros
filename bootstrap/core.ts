@@ -7,7 +7,7 @@ import { router } from "@routers";
 
 const micros = fastify();
 micros.register(helmet, { global: true });
-micros.register(cors, { credentials: true, origin: `${spacesURL}` });
+micros.register(cors, { credentials: true, origin: `http://localhost:3500` });
 micros.register(router);
 
 export const start = async () => {
