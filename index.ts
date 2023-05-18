@@ -1,3 +1,3 @@
-import { start } from "./bootstrap/core";
+import { start } from './bootstrap/core';
 
 start();
